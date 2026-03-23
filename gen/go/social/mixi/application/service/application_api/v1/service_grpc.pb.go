@@ -22,6 +22,7 @@ const (
 	ApplicationService_GetUsers_FullMethodName                = "/social.mixi.application.service.application_api.v1.ApplicationService/GetUsers"
 	ApplicationService_GetPosts_FullMethodName                = "/social.mixi.application.service.application_api.v1.ApplicationService/GetPosts"
 	ApplicationService_CreatePost_FullMethodName              = "/social.mixi.application.service.application_api.v1.ApplicationService/CreatePost"
+	ApplicationService_DeletePost_FullMethodName              = "/social.mixi.application.service.application_api.v1.ApplicationService/DeletePost"
 	ApplicationService_InitiatePostMediaUpload_FullMethodName = "/social.mixi.application.service.application_api.v1.ApplicationService/InitiatePostMediaUpload"
 	ApplicationService_GetPostMediaStatus_FullMethodName      = "/social.mixi.application.service.application_api.v1.ApplicationService/GetPostMediaStatus"
 	ApplicationService_SendChatMessage_FullMethodName         = "/social.mixi.application.service.application_api.v1.ApplicationService/SendChatMessage"
@@ -41,6 +42,8 @@ type ApplicationServiceClient interface {
 	GetPosts(ctx context.Context, in *GetPostsRequest, opts ...grpc.CallOption) (*GetPostsResponse, error)
 	// ポストを作成します（返信/引用/メディア添付等に対応）。
 	CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*CreatePostResponse, error)
+	// 指定したポストを削除します。
+	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error)
 	// ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
 	InitiatePostMediaUpload(ctx context.Context, in *InitiatePostMediaUploadRequest, opts ...grpc.CallOption) (*InitiatePostMediaUploadResponse, error)
 	// 指定したメディアIDのアップロード/処理状況を取得します。
@@ -85,6 +88,16 @@ func (c *applicationServiceClient) CreatePost(ctx context.Context, in *CreatePos
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreatePostResponse)
 	err := c.cc.Invoke(ctx, ApplicationService_CreatePost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *applicationServiceClient) DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeletePostResponse)
+	err := c.cc.Invoke(ctx, ApplicationService_DeletePost_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -153,6 +166,8 @@ type ApplicationServiceServer interface {
 	GetPosts(context.Context, *GetPostsRequest) (*GetPostsResponse, error)
 	// ポストを作成します（返信/引用/メディア添付等に対応）。
 	CreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error)
+	// 指定したポストを削除します。
+	DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error)
 	// ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
 	InitiatePostMediaUpload(context.Context, *InitiatePostMediaUploadRequest) (*InitiatePostMediaUploadResponse, error)
 	// 指定したメディアIDのアップロード/処理状況を取得します。
@@ -181,6 +196,9 @@ func (UnimplementedApplicationServiceServer) GetPosts(context.Context, *GetPosts
 }
 func (UnimplementedApplicationServiceServer) CreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreatePost not implemented")
+}
+func (UnimplementedApplicationServiceServer) DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeletePost not implemented")
 }
 func (UnimplementedApplicationServiceServer) InitiatePostMediaUpload(context.Context, *InitiatePostMediaUploadRequest) (*InitiatePostMediaUploadResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method InitiatePostMediaUpload not implemented")
@@ -268,6 +286,24 @@ func _ApplicationService_CreatePost_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ApplicationServiceServer).CreatePost(ctx, req.(*CreatePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ApplicationService_DeletePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServiceServer).DeletePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ApplicationService_DeletePost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServiceServer).DeletePost(ctx, req.(*DeletePostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -380,6 +416,10 @@ var ApplicationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreatePost",
 			Handler:    _ApplicationService_CreatePost_Handler,
+		},
+		{
+			MethodName: "DeletePost",
+			Handler:    _ApplicationService_DeletePost_Handler,
 		},
 		{
 			MethodName: "InitiatePostMediaUpload",

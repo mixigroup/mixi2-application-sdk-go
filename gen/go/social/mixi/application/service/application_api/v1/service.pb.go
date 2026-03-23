@@ -678,6 +678,98 @@ func (x *CreatePostResponse) GetPost() *v1.Post {
 	return nil
 }
 
+// ポスト削除リクエストです。
+type DeletePostRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 削除対象のポストIDを指定してください。
+	PostId        string `protobuf:"bytes,1,opt,name=post_id,json=postId,proto3" json:"post_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeletePostRequest) Reset() {
+	*x = DeletePostRequest{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeletePostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeletePostRequest) ProtoMessage() {}
+
+func (x *DeletePostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeletePostRequest.ProtoReflect.Descriptor instead.
+func (*DeletePostRequest) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DeletePostRequest) GetPostId() string {
+	if x != nil {
+		return x.PostId
+	}
+	return ""
+}
+
+// ポスト削除レスポンスです。
+type DeletePostResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ポストが削除されたかどうかを示します。
+	Deleted       bool `protobuf:"varint,1,opt,name=deleted,proto3" json:"deleted,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeletePostResponse) Reset() {
+	*x = DeletePostResponse{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeletePostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeletePostResponse) ProtoMessage() {}
+
+func (x *DeletePostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeletePostResponse.ProtoReflect.Descriptor instead.
+func (*DeletePostResponse) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DeletePostResponse) GetDeleted() bool {
+	if x != nil {
+		return x.Deleted
+	}
+	return false
+}
+
 // text または media_id のいずれかは必須です。
 type SendChatMessageRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -693,7 +785,7 @@ type SendChatMessageRequest struct {
 
 func (x *SendChatMessageRequest) Reset() {
 	*x = SendChatMessageRequest{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[10]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -705,7 +797,7 @@ func (x *SendChatMessageRequest) String() string {
 func (*SendChatMessageRequest) ProtoMessage() {}
 
 func (x *SendChatMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[10]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -718,7 +810,7 @@ func (x *SendChatMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendChatMessageRequest.ProtoReflect.Descriptor instead.
 func (*SendChatMessageRequest) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{10}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *SendChatMessageRequest) GetRoomId() string {
@@ -753,7 +845,7 @@ type SendChatMessageResponse struct {
 
 func (x *SendChatMessageResponse) Reset() {
 	*x = SendChatMessageResponse{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[11]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -765,7 +857,7 @@ func (x *SendChatMessageResponse) String() string {
 func (*SendChatMessageResponse) ProtoMessage() {}
 
 func (x *SendChatMessageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[11]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -778,7 +870,7 @@ func (x *SendChatMessageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendChatMessageResponse.ProtoReflect.Descriptor instead.
 func (*SendChatMessageResponse) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{11}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *SendChatMessageResponse) GetMessage() *v1.ChatMessage {
@@ -800,7 +892,7 @@ type GetStampsRequest struct {
 
 func (x *GetStampsRequest) Reset() {
 	*x = GetStampsRequest{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[12]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -812,7 +904,7 @@ func (x *GetStampsRequest) String() string {
 func (*GetStampsRequest) ProtoMessage() {}
 
 func (x *GetStampsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[12]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -825,7 +917,7 @@ func (x *GetStampsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStampsRequest.ProtoReflect.Descriptor instead.
 func (*GetStampsRequest) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{12}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetStampsRequest) GetOfficialStampLanguage() v11.LanguageCode {
@@ -846,7 +938,7 @@ type GetStampsResponse struct {
 
 func (x *GetStampsResponse) Reset() {
 	*x = GetStampsResponse{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[13]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -858,7 +950,7 @@ func (x *GetStampsResponse) String() string {
 func (*GetStampsResponse) ProtoMessage() {}
 
 func (x *GetStampsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[13]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -871,7 +963,7 @@ func (x *GetStampsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStampsResponse.ProtoReflect.Descriptor instead.
 func (*GetStampsResponse) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{13}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetStampsResponse) GetOfficialStampSets() []*v1.OfficialStampSet {
@@ -896,7 +988,7 @@ type AddStampToPostRequest struct {
 
 func (x *AddStampToPostRequest) Reset() {
 	*x = AddStampToPostRequest{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[14]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -908,7 +1000,7 @@ func (x *AddStampToPostRequest) String() string {
 func (*AddStampToPostRequest) ProtoMessage() {}
 
 func (x *AddStampToPostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[14]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -921,7 +1013,7 @@ func (x *AddStampToPostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddStampToPostRequest.ProtoReflect.Descriptor instead.
 func (*AddStampToPostRequest) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{14}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *AddStampToPostRequest) GetPostId() string {
@@ -949,7 +1041,7 @@ type AddStampToPostResponse struct {
 
 func (x *AddStampToPostResponse) Reset() {
 	*x = AddStampToPostResponse{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[15]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -961,7 +1053,7 @@ func (x *AddStampToPostResponse) String() string {
 func (*AddStampToPostResponse) ProtoMessage() {}
 
 func (x *AddStampToPostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[15]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -974,7 +1066,7 @@ func (x *AddStampToPostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddStampToPostResponse.ProtoReflect.Descriptor instead.
 func (*AddStampToPostResponse) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{15}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *AddStampToPostResponse) GetPost() *v1.Post {
@@ -1039,7 +1131,11 @@ const file_social_mixi_application_service_application_api_v1_service_proto_rawD
 	"_post_maskB\x12\n" +
 	"\x10_publishing_type\"P\n" +
 	"\x12CreatePostResponse\x12:\n" +
-	"\x04post\x18\x01 \x01(\v2&.social.mixi.application.model.v1.PostR\x04post\"\x80\x01\n" +
+	"\x04post\x18\x01 \x01(\v2&.social.mixi.application.model.v1.PostR\x04post\",\n" +
+	"\x11DeletePostRequest\x12\x17\n" +
+	"\apost_id\x18\x01 \x01(\tR\x06postId\".\n" +
+	"\x12DeletePostResponse\x12\x18\n" +
+	"\adeleted\x18\x01 \x01(\bR\adeleted\"\x80\x01\n" +
 	"\x16SendChatMessageRequest\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\tR\x06roomId\x12\x17\n" +
 	"\x04text\x18\x02 \x01(\tH\x00R\x04text\x88\x01\x01\x12\x1e\n" +
@@ -1057,13 +1153,14 @@ const file_social_mixi_application_service_application_api_v1_service_proto_rawD
 	"\apost_id\x18\x01 \x01(\tR\x06postId\x12\x19\n" +
 	"\bstamp_id\x18\x02 \x01(\tR\astampId\"T\n" +
 	"\x16AddStampToPostResponse\x12:\n" +
-	"\x04post\x18\x01 \x01(\v2&.social.mixi.application.model.v1.PostR\x04post2\xcf\n" +
-	"\n" +
+	"\x04post\x18\x01 \x01(\v2&.social.mixi.application.model.v1.PostR\x04post2\xed\v\n" +
 	"\x12ApplicationService\x12\x95\x01\n" +
 	"\bGetUsers\x12C.social.mixi.application.service.application_api.v1.GetUsersRequest\x1aD.social.mixi.application.service.application_api.v1.GetUsersResponse\x12\x95\x01\n" +
 	"\bGetPosts\x12C.social.mixi.application.service.application_api.v1.GetPostsRequest\x1aD.social.mixi.application.service.application_api.v1.GetPostsResponse\x12\x9b\x01\n" +
 	"\n" +
-	"CreatePost\x12E.social.mixi.application.service.application_api.v1.CreatePostRequest\x1aF.social.mixi.application.service.application_api.v1.CreatePostResponse\x12\xc2\x01\n" +
+	"CreatePost\x12E.social.mixi.application.service.application_api.v1.CreatePostRequest\x1aF.social.mixi.application.service.application_api.v1.CreatePostResponse\x12\x9b\x01\n" +
+	"\n" +
+	"DeletePost\x12E.social.mixi.application.service.application_api.v1.DeletePostRequest\x1aF.social.mixi.application.service.application_api.v1.DeletePostResponse\x12\xc2\x01\n" +
 	"\x17InitiatePostMediaUpload\x12R.social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest\x1aS.social.mixi.application.service.application_api.v1.InitiatePostMediaUploadResponse\x12\xb3\x01\n" +
 	"\x12GetPostMediaStatus\x12M.social.mixi.application.service.application_api.v1.GetPostMediaStatusRequest\x1aN.social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse\x12\xaa\x01\n" +
 	"\x0fSendChatMessage\x12J.social.mixi.application.service.application_api.v1.SendChatMessageRequest\x1aK.social.mixi.application.service.application_api.v1.SendChatMessageResponse\x12\x98\x01\n" +
@@ -1084,7 +1181,7 @@ func file_social_mixi_application_service_application_api_v1_service_proto_rawDe
 }
 
 var file_social_mixi_application_service_application_api_v1_service_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_social_mixi_application_service_application_api_v1_service_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_social_mixi_application_service_application_api_v1_service_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_social_mixi_application_service_application_api_v1_service_proto_goTypes = []any{
 	(InitiatePostMediaUploadRequest_Type)(0), // 0: social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest.Type
 	(GetPostMediaStatusResponse_Status)(0),   // 1: social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse.Status
@@ -1098,50 +1195,54 @@ var file_social_mixi_application_service_application_api_v1_service_proto_goType
 	(*GetPostMediaStatusResponse)(nil),       // 9: social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse
 	(*CreatePostRequest)(nil),                // 10: social.mixi.application.service.application_api.v1.CreatePostRequest
 	(*CreatePostResponse)(nil),               // 11: social.mixi.application.service.application_api.v1.CreatePostResponse
-	(*SendChatMessageRequest)(nil),           // 12: social.mixi.application.service.application_api.v1.SendChatMessageRequest
-	(*SendChatMessageResponse)(nil),          // 13: social.mixi.application.service.application_api.v1.SendChatMessageResponse
-	(*GetStampsRequest)(nil),                 // 14: social.mixi.application.service.application_api.v1.GetStampsRequest
-	(*GetStampsResponse)(nil),                // 15: social.mixi.application.service.application_api.v1.GetStampsResponse
-	(*AddStampToPostRequest)(nil),            // 16: social.mixi.application.service.application_api.v1.AddStampToPostRequest
-	(*AddStampToPostResponse)(nil),           // 17: social.mixi.application.service.application_api.v1.AddStampToPostResponse
-	(*v1.User)(nil),                          // 18: social.mixi.application.model.v1.User
-	(*v1.Post)(nil),                          // 19: social.mixi.application.model.v1.Post
-	(*v1.PostMask)(nil),                      // 20: social.mixi.application.model.v1.PostMask
-	(v11.PostPublishingType)(0),              // 21: social.mixi.application.const.v1.PostPublishingType
-	(*v1.ChatMessage)(nil),                   // 22: social.mixi.application.model.v1.ChatMessage
-	(v11.LanguageCode)(0),                    // 23: social.mixi.application.const.v1.LanguageCode
-	(*v1.OfficialStampSet)(nil),              // 24: social.mixi.application.model.v1.OfficialStampSet
+	(*DeletePostRequest)(nil),                // 12: social.mixi.application.service.application_api.v1.DeletePostRequest
+	(*DeletePostResponse)(nil),               // 13: social.mixi.application.service.application_api.v1.DeletePostResponse
+	(*SendChatMessageRequest)(nil),           // 14: social.mixi.application.service.application_api.v1.SendChatMessageRequest
+	(*SendChatMessageResponse)(nil),          // 15: social.mixi.application.service.application_api.v1.SendChatMessageResponse
+	(*GetStampsRequest)(nil),                 // 16: social.mixi.application.service.application_api.v1.GetStampsRequest
+	(*GetStampsResponse)(nil),                // 17: social.mixi.application.service.application_api.v1.GetStampsResponse
+	(*AddStampToPostRequest)(nil),            // 18: social.mixi.application.service.application_api.v1.AddStampToPostRequest
+	(*AddStampToPostResponse)(nil),           // 19: social.mixi.application.service.application_api.v1.AddStampToPostResponse
+	(*v1.User)(nil),                          // 20: social.mixi.application.model.v1.User
+	(*v1.Post)(nil),                          // 21: social.mixi.application.model.v1.Post
+	(*v1.PostMask)(nil),                      // 22: social.mixi.application.model.v1.PostMask
+	(v11.PostPublishingType)(0),              // 23: social.mixi.application.const.v1.PostPublishingType
+	(*v1.ChatMessage)(nil),                   // 24: social.mixi.application.model.v1.ChatMessage
+	(v11.LanguageCode)(0),                    // 25: social.mixi.application.const.v1.LanguageCode
+	(*v1.OfficialStampSet)(nil),              // 26: social.mixi.application.model.v1.OfficialStampSet
 }
 var file_social_mixi_application_service_application_api_v1_service_proto_depIdxs = []int32{
-	18, // 0: social.mixi.application.service.application_api.v1.GetUsersResponse.users:type_name -> social.mixi.application.model.v1.User
-	19, // 1: social.mixi.application.service.application_api.v1.GetPostsResponse.posts:type_name -> social.mixi.application.model.v1.Post
+	20, // 0: social.mixi.application.service.application_api.v1.GetUsersResponse.users:type_name -> social.mixi.application.model.v1.User
+	21, // 1: social.mixi.application.service.application_api.v1.GetPostsResponse.posts:type_name -> social.mixi.application.model.v1.Post
 	0,  // 2: social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest.media_type:type_name -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest.Type
 	1,  // 3: social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse.status:type_name -> social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse.Status
-	20, // 4: social.mixi.application.service.application_api.v1.CreatePostRequest.post_mask:type_name -> social.mixi.application.model.v1.PostMask
-	21, // 5: social.mixi.application.service.application_api.v1.CreatePostRequest.publishing_type:type_name -> social.mixi.application.const.v1.PostPublishingType
-	19, // 6: social.mixi.application.service.application_api.v1.CreatePostResponse.post:type_name -> social.mixi.application.model.v1.Post
-	22, // 7: social.mixi.application.service.application_api.v1.SendChatMessageResponse.message:type_name -> social.mixi.application.model.v1.ChatMessage
-	23, // 8: social.mixi.application.service.application_api.v1.GetStampsRequest.official_stamp_language:type_name -> social.mixi.application.const.v1.LanguageCode
-	24, // 9: social.mixi.application.service.application_api.v1.GetStampsResponse.official_stamp_sets:type_name -> social.mixi.application.model.v1.OfficialStampSet
-	19, // 10: social.mixi.application.service.application_api.v1.AddStampToPostResponse.post:type_name -> social.mixi.application.model.v1.Post
+	22, // 4: social.mixi.application.service.application_api.v1.CreatePostRequest.post_mask:type_name -> social.mixi.application.model.v1.PostMask
+	23, // 5: social.mixi.application.service.application_api.v1.CreatePostRequest.publishing_type:type_name -> social.mixi.application.const.v1.PostPublishingType
+	21, // 6: social.mixi.application.service.application_api.v1.CreatePostResponse.post:type_name -> social.mixi.application.model.v1.Post
+	24, // 7: social.mixi.application.service.application_api.v1.SendChatMessageResponse.message:type_name -> social.mixi.application.model.v1.ChatMessage
+	25, // 8: social.mixi.application.service.application_api.v1.GetStampsRequest.official_stamp_language:type_name -> social.mixi.application.const.v1.LanguageCode
+	26, // 9: social.mixi.application.service.application_api.v1.GetStampsResponse.official_stamp_sets:type_name -> social.mixi.application.model.v1.OfficialStampSet
+	21, // 10: social.mixi.application.service.application_api.v1.AddStampToPostResponse.post:type_name -> social.mixi.application.model.v1.Post
 	2,  // 11: social.mixi.application.service.application_api.v1.ApplicationService.GetUsers:input_type -> social.mixi.application.service.application_api.v1.GetUsersRequest
 	4,  // 12: social.mixi.application.service.application_api.v1.ApplicationService.GetPosts:input_type -> social.mixi.application.service.application_api.v1.GetPostsRequest
 	10, // 13: social.mixi.application.service.application_api.v1.ApplicationService.CreatePost:input_type -> social.mixi.application.service.application_api.v1.CreatePostRequest
-	6,  // 14: social.mixi.application.service.application_api.v1.ApplicationService.InitiatePostMediaUpload:input_type -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest
-	8,  // 15: social.mixi.application.service.application_api.v1.ApplicationService.GetPostMediaStatus:input_type -> social.mixi.application.service.application_api.v1.GetPostMediaStatusRequest
-	12, // 16: social.mixi.application.service.application_api.v1.ApplicationService.SendChatMessage:input_type -> social.mixi.application.service.application_api.v1.SendChatMessageRequest
-	14, // 17: social.mixi.application.service.application_api.v1.ApplicationService.GetStamps:input_type -> social.mixi.application.service.application_api.v1.GetStampsRequest
-	16, // 18: social.mixi.application.service.application_api.v1.ApplicationService.AddStampToPost:input_type -> social.mixi.application.service.application_api.v1.AddStampToPostRequest
-	3,  // 19: social.mixi.application.service.application_api.v1.ApplicationService.GetUsers:output_type -> social.mixi.application.service.application_api.v1.GetUsersResponse
-	5,  // 20: social.mixi.application.service.application_api.v1.ApplicationService.GetPosts:output_type -> social.mixi.application.service.application_api.v1.GetPostsResponse
-	11, // 21: social.mixi.application.service.application_api.v1.ApplicationService.CreatePost:output_type -> social.mixi.application.service.application_api.v1.CreatePostResponse
-	7,  // 22: social.mixi.application.service.application_api.v1.ApplicationService.InitiatePostMediaUpload:output_type -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadResponse
-	9,  // 23: social.mixi.application.service.application_api.v1.ApplicationService.GetPostMediaStatus:output_type -> social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse
-	13, // 24: social.mixi.application.service.application_api.v1.ApplicationService.SendChatMessage:output_type -> social.mixi.application.service.application_api.v1.SendChatMessageResponse
-	15, // 25: social.mixi.application.service.application_api.v1.ApplicationService.GetStamps:output_type -> social.mixi.application.service.application_api.v1.GetStampsResponse
-	17, // 26: social.mixi.application.service.application_api.v1.ApplicationService.AddStampToPost:output_type -> social.mixi.application.service.application_api.v1.AddStampToPostResponse
-	19, // [19:27] is the sub-list for method output_type
-	11, // [11:19] is the sub-list for method input_type
+	12, // 14: social.mixi.application.service.application_api.v1.ApplicationService.DeletePost:input_type -> social.mixi.application.service.application_api.v1.DeletePostRequest
+	6,  // 15: social.mixi.application.service.application_api.v1.ApplicationService.InitiatePostMediaUpload:input_type -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest
+	8,  // 16: social.mixi.application.service.application_api.v1.ApplicationService.GetPostMediaStatus:input_type -> social.mixi.application.service.application_api.v1.GetPostMediaStatusRequest
+	14, // 17: social.mixi.application.service.application_api.v1.ApplicationService.SendChatMessage:input_type -> social.mixi.application.service.application_api.v1.SendChatMessageRequest
+	16, // 18: social.mixi.application.service.application_api.v1.ApplicationService.GetStamps:input_type -> social.mixi.application.service.application_api.v1.GetStampsRequest
+	18, // 19: social.mixi.application.service.application_api.v1.ApplicationService.AddStampToPost:input_type -> social.mixi.application.service.application_api.v1.AddStampToPostRequest
+	3,  // 20: social.mixi.application.service.application_api.v1.ApplicationService.GetUsers:output_type -> social.mixi.application.service.application_api.v1.GetUsersResponse
+	5,  // 21: social.mixi.application.service.application_api.v1.ApplicationService.GetPosts:output_type -> social.mixi.application.service.application_api.v1.GetPostsResponse
+	11, // 22: social.mixi.application.service.application_api.v1.ApplicationService.CreatePost:output_type -> social.mixi.application.service.application_api.v1.CreatePostResponse
+	13, // 23: social.mixi.application.service.application_api.v1.ApplicationService.DeletePost:output_type -> social.mixi.application.service.application_api.v1.DeletePostResponse
+	7,  // 24: social.mixi.application.service.application_api.v1.ApplicationService.InitiatePostMediaUpload:output_type -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadResponse
+	9,  // 25: social.mixi.application.service.application_api.v1.ApplicationService.GetPostMediaStatus:output_type -> social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse
+	15, // 26: social.mixi.application.service.application_api.v1.ApplicationService.SendChatMessage:output_type -> social.mixi.application.service.application_api.v1.SendChatMessageResponse
+	17, // 27: social.mixi.application.service.application_api.v1.ApplicationService.GetStamps:output_type -> social.mixi.application.service.application_api.v1.GetStampsResponse
+	19, // 28: social.mixi.application.service.application_api.v1.ApplicationService.AddStampToPost:output_type -> social.mixi.application.service.application_api.v1.AddStampToPostResponse
+	20, // [20:29] is the sub-list for method output_type
+	11, // [11:20] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name
 	11, // [11:11] is the sub-list for extension extendee
 	0,  // [0:11] is the sub-list for field type_name
@@ -1154,15 +1255,15 @@ func file_social_mixi_application_service_application_api_v1_service_proto_init(
 	}
 	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[4].OneofWrappers = []any{}
 	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[8].OneofWrappers = []any{}
-	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[10].OneofWrappers = []any{}
 	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[12].OneofWrappers = []any{}
+	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[14].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_social_mixi_application_service_application_api_v1_service_proto_rawDesc), len(file_social_mixi_application_service_application_api_v1_service_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   16,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
