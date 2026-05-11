@@ -19,15 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ApplicationService_GetUsers_FullMethodName                = "/social.mixi.application.service.application_api.v1.ApplicationService/GetUsers"
-	ApplicationService_GetPosts_FullMethodName                = "/social.mixi.application.service.application_api.v1.ApplicationService/GetPosts"
-	ApplicationService_CreatePost_FullMethodName              = "/social.mixi.application.service.application_api.v1.ApplicationService/CreatePost"
-	ApplicationService_DeletePost_FullMethodName              = "/social.mixi.application.service.application_api.v1.ApplicationService/DeletePost"
-	ApplicationService_InitiatePostMediaUpload_FullMethodName = "/social.mixi.application.service.application_api.v1.ApplicationService/InitiatePostMediaUpload"
-	ApplicationService_GetPostMediaStatus_FullMethodName      = "/social.mixi.application.service.application_api.v1.ApplicationService/GetPostMediaStatus"
-	ApplicationService_SendChatMessage_FullMethodName         = "/social.mixi.application.service.application_api.v1.ApplicationService/SendChatMessage"
-	ApplicationService_GetStamps_FullMethodName               = "/social.mixi.application.service.application_api.v1.ApplicationService/GetStamps"
-	ApplicationService_AddStampToPost_FullMethodName          = "/social.mixi.application.service.application_api.v1.ApplicationService/AddStampToPost"
+	ApplicationService_GetUsers_FullMethodName                           = "/social.mixi.application.service.application_api.v1.ApplicationService/GetUsers"
+	ApplicationService_GetPosts_FullMethodName                           = "/social.mixi.application.service.application_api.v1.ApplicationService/GetPosts"
+	ApplicationService_GetCommunities_FullMethodName                     = "/social.mixi.application.service.application_api.v1.ApplicationService/GetCommunities"
+	ApplicationService_CreatePost_FullMethodName                         = "/social.mixi.application.service.application_api.v1.ApplicationService/CreatePost"
+	ApplicationService_DeletePost_FullMethodName                         = "/social.mixi.application.service.application_api.v1.ApplicationService/DeletePost"
+	ApplicationService_InitiatePostMediaUpload_FullMethodName            = "/social.mixi.application.service.application_api.v1.ApplicationService/InitiatePostMediaUpload"
+	ApplicationService_GetPostMediaStatus_FullMethodName                 = "/social.mixi.application.service.application_api.v1.ApplicationService/GetPostMediaStatus"
+	ApplicationService_GetCommunityTimeline_FullMethodName               = "/social.mixi.application.service.application_api.v1.ApplicationService/GetCommunityTimeline"
+	ApplicationService_GetCommunityMemberList_FullMethodName             = "/social.mixi.application.service.application_api.v1.ApplicationService/GetCommunityMemberList"
+	ApplicationService_RestrictCommunityPost_FullMethodName              = "/social.mixi.application.service.application_api.v1.ApplicationService/RestrictCommunityPost"
+	ApplicationService_GetCommunitiesUsingApplication_FullMethodName     = "/social.mixi.application.service.application_api.v1.ApplicationService/GetCommunitiesUsingApplication"
+	ApplicationService_SendChatMessage_FullMethodName                    = "/social.mixi.application.service.application_api.v1.ApplicationService/SendChatMessage"
+	ApplicationService_GetStamps_FullMethodName                          = "/social.mixi.application.service.application_api.v1.ApplicationService/GetStamps"
+	ApplicationService_AddStampToPost_FullMethodName                     = "/social.mixi.application.service.application_api.v1.ApplicationService/AddStampToPost"
+	ApplicationService_SendDirectMessageToCommunityMember_FullMethodName = "/social.mixi.application.service.application_api.v1.ApplicationService/SendDirectMessageToCommunityMember"
 )
 
 // ApplicationServiceClient is the client API for ApplicationService service.
@@ -40,7 +46,9 @@ type ApplicationServiceClient interface {
 	GetUsers(ctx context.Context, in *GetUsersRequest, opts ...grpc.CallOption) (*GetUsersResponse, error)
 	// 指定したポストIDリストに対応するポスト情報を取得します。
 	GetPosts(ctx context.Context, in *GetPostsRequest, opts ...grpc.CallOption) (*GetPostsResponse, error)
-	// ポストを作成します（返信/引用/メディア添付等に対応）。
+	// 指定したコミュニティIDリストに対応するコミュニティ情報を取得します。
+	GetCommunities(ctx context.Context, in *GetCommunitiesRequest, opts ...grpc.CallOption) (*GetCommunitiesResponse, error)
+	// ポストを作成します（返信/引用/コミュニティポスト・メディア添付等に対応）。
 	CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*CreatePostResponse, error)
 	// 指定したポストを削除します。
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error)
@@ -48,12 +56,22 @@ type ApplicationServiceClient interface {
 	InitiatePostMediaUpload(ctx context.Context, in *InitiatePostMediaUploadRequest, opts ...grpc.CallOption) (*InitiatePostMediaUploadResponse, error)
 	// 指定したメディアIDのアップロード/処理状況を取得します。
 	GetPostMediaStatus(ctx context.Context, in *GetPostMediaStatusRequest, opts ...grpc.CallOption) (*GetPostMediaStatusResponse, error)
+	// 指定したコミュニティのタイムライン（ポスト一覧）を取得します。
+	GetCommunityTimeline(ctx context.Context, in *GetCommunityTimelineRequest, opts ...grpc.CallOption) (*GetCommunityTimelineResponse, error)
+	// 指定したコミュニティのメンバー一覧をページング付きで取得します。
+	GetCommunityMemberList(ctx context.Context, in *GetCommunityMemberListRequest, opts ...grpc.CallOption) (*GetCommunityMemberListResponse, error)
+	// 指定したポストをコミュニティのタイムラインから非表示にします（削除ではありません）。
+	RestrictCommunityPost(ctx context.Context, in *RestrictCommunityPostRequest, opts ...grpc.CallOption) (*RestrictCommunityPostResponse, error)
+	// アプリケーションが導入されているコミュニティ一覧と、各コミュニティが利用しているアプリケーションバージョン情報を取得します。
+	GetCommunitiesUsingApplication(ctx context.Context, in *GetCommunitiesUsingApplicationRequest, opts ...grpc.CallOption) (*GetCommunitiesUsingApplicationResponse, error)
 	// 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
 	SendChatMessage(ctx context.Context, in *SendChatMessageRequest, opts ...grpc.CallOption) (*SendChatMessageResponse, error)
 	// スタンプ一覧を取得します。
 	GetStamps(ctx context.Context, in *GetStampsRequest, opts ...grpc.CallOption) (*GetStampsResponse, error)
 	// 指定したポストにスタンプを付与します。
 	AddStampToPost(ctx context.Context, in *AddStampToPostRequest, opts ...grpc.CallOption) (*AddStampToPostResponse, error)
+	// コミュニティメンバーにダイレクトメッセージを送信します。
+	SendDirectMessageToCommunityMember(ctx context.Context, in *SendDirectMessageToCommunityMemberRequest, opts ...grpc.CallOption) (*SendDirectMessageToCommunityMemberResponse, error)
 }
 
 type applicationServiceClient struct {
@@ -78,6 +96,16 @@ func (c *applicationServiceClient) GetPosts(ctx context.Context, in *GetPostsReq
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetPostsResponse)
 	err := c.cc.Invoke(ctx, ApplicationService_GetPosts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *applicationServiceClient) GetCommunities(ctx context.Context, in *GetCommunitiesRequest, opts ...grpc.CallOption) (*GetCommunitiesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCommunitiesResponse)
+	err := c.cc.Invoke(ctx, ApplicationService_GetCommunities_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -124,6 +152,46 @@ func (c *applicationServiceClient) GetPostMediaStatus(ctx context.Context, in *G
 	return out, nil
 }
 
+func (c *applicationServiceClient) GetCommunityTimeline(ctx context.Context, in *GetCommunityTimelineRequest, opts ...grpc.CallOption) (*GetCommunityTimelineResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCommunityTimelineResponse)
+	err := c.cc.Invoke(ctx, ApplicationService_GetCommunityTimeline_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *applicationServiceClient) GetCommunityMemberList(ctx context.Context, in *GetCommunityMemberListRequest, opts ...grpc.CallOption) (*GetCommunityMemberListResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCommunityMemberListResponse)
+	err := c.cc.Invoke(ctx, ApplicationService_GetCommunityMemberList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *applicationServiceClient) RestrictCommunityPost(ctx context.Context, in *RestrictCommunityPostRequest, opts ...grpc.CallOption) (*RestrictCommunityPostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RestrictCommunityPostResponse)
+	err := c.cc.Invoke(ctx, ApplicationService_RestrictCommunityPost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *applicationServiceClient) GetCommunitiesUsingApplication(ctx context.Context, in *GetCommunitiesUsingApplicationRequest, opts ...grpc.CallOption) (*GetCommunitiesUsingApplicationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCommunitiesUsingApplicationResponse)
+	err := c.cc.Invoke(ctx, ApplicationService_GetCommunitiesUsingApplication_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *applicationServiceClient) SendChatMessage(ctx context.Context, in *SendChatMessageRequest, opts ...grpc.CallOption) (*SendChatMessageResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SendChatMessageResponse)
@@ -154,6 +222,16 @@ func (c *applicationServiceClient) AddStampToPost(ctx context.Context, in *AddSt
 	return out, nil
 }
 
+func (c *applicationServiceClient) SendDirectMessageToCommunityMember(ctx context.Context, in *SendDirectMessageToCommunityMemberRequest, opts ...grpc.CallOption) (*SendDirectMessageToCommunityMemberResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SendDirectMessageToCommunityMemberResponse)
+	err := c.cc.Invoke(ctx, ApplicationService_SendDirectMessageToCommunityMember_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ApplicationServiceServer is the server API for ApplicationService service.
 // All implementations must embed UnimplementedApplicationServiceServer
 // for forward compatibility.
@@ -164,7 +242,9 @@ type ApplicationServiceServer interface {
 	GetUsers(context.Context, *GetUsersRequest) (*GetUsersResponse, error)
 	// 指定したポストIDリストに対応するポスト情報を取得します。
 	GetPosts(context.Context, *GetPostsRequest) (*GetPostsResponse, error)
-	// ポストを作成します（返信/引用/メディア添付等に対応）。
+	// 指定したコミュニティIDリストに対応するコミュニティ情報を取得します。
+	GetCommunities(context.Context, *GetCommunitiesRequest) (*GetCommunitiesResponse, error)
+	// ポストを作成します（返信/引用/コミュニティポスト・メディア添付等に対応）。
 	CreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error)
 	// 指定したポストを削除します。
 	DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error)
@@ -172,12 +252,22 @@ type ApplicationServiceServer interface {
 	InitiatePostMediaUpload(context.Context, *InitiatePostMediaUploadRequest) (*InitiatePostMediaUploadResponse, error)
 	// 指定したメディアIDのアップロード/処理状況を取得します。
 	GetPostMediaStatus(context.Context, *GetPostMediaStatusRequest) (*GetPostMediaStatusResponse, error)
+	// 指定したコミュニティのタイムライン（ポスト一覧）を取得します。
+	GetCommunityTimeline(context.Context, *GetCommunityTimelineRequest) (*GetCommunityTimelineResponse, error)
+	// 指定したコミュニティのメンバー一覧をページング付きで取得します。
+	GetCommunityMemberList(context.Context, *GetCommunityMemberListRequest) (*GetCommunityMemberListResponse, error)
+	// 指定したポストをコミュニティのタイムラインから非表示にします（削除ではありません）。
+	RestrictCommunityPost(context.Context, *RestrictCommunityPostRequest) (*RestrictCommunityPostResponse, error)
+	// アプリケーションが導入されているコミュニティ一覧と、各コミュニティが利用しているアプリケーションバージョン情報を取得します。
+	GetCommunitiesUsingApplication(context.Context, *GetCommunitiesUsingApplicationRequest) (*GetCommunitiesUsingApplicationResponse, error)
 	// 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
 	SendChatMessage(context.Context, *SendChatMessageRequest) (*SendChatMessageResponse, error)
 	// スタンプ一覧を取得します。
 	GetStamps(context.Context, *GetStampsRequest) (*GetStampsResponse, error)
 	// 指定したポストにスタンプを付与します。
 	AddStampToPost(context.Context, *AddStampToPostRequest) (*AddStampToPostResponse, error)
+	// コミュニティメンバーにダイレクトメッセージを送信します。
+	SendDirectMessageToCommunityMember(context.Context, *SendDirectMessageToCommunityMemberRequest) (*SendDirectMessageToCommunityMemberResponse, error)
 	mustEmbedUnimplementedApplicationServiceServer()
 }
 
@@ -194,6 +284,9 @@ func (UnimplementedApplicationServiceServer) GetUsers(context.Context, *GetUsers
 func (UnimplementedApplicationServiceServer) GetPosts(context.Context, *GetPostsRequest) (*GetPostsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetPosts not implemented")
 }
+func (UnimplementedApplicationServiceServer) GetCommunities(context.Context, *GetCommunitiesRequest) (*GetCommunitiesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetCommunities not implemented")
+}
 func (UnimplementedApplicationServiceServer) CreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreatePost not implemented")
 }
@@ -206,6 +299,18 @@ func (UnimplementedApplicationServiceServer) InitiatePostMediaUpload(context.Con
 func (UnimplementedApplicationServiceServer) GetPostMediaStatus(context.Context, *GetPostMediaStatusRequest) (*GetPostMediaStatusResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetPostMediaStatus not implemented")
 }
+func (UnimplementedApplicationServiceServer) GetCommunityTimeline(context.Context, *GetCommunityTimelineRequest) (*GetCommunityTimelineResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetCommunityTimeline not implemented")
+}
+func (UnimplementedApplicationServiceServer) GetCommunityMemberList(context.Context, *GetCommunityMemberListRequest) (*GetCommunityMemberListResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetCommunityMemberList not implemented")
+}
+func (UnimplementedApplicationServiceServer) RestrictCommunityPost(context.Context, *RestrictCommunityPostRequest) (*RestrictCommunityPostResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RestrictCommunityPost not implemented")
+}
+func (UnimplementedApplicationServiceServer) GetCommunitiesUsingApplication(context.Context, *GetCommunitiesUsingApplicationRequest) (*GetCommunitiesUsingApplicationResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetCommunitiesUsingApplication not implemented")
+}
 func (UnimplementedApplicationServiceServer) SendChatMessage(context.Context, *SendChatMessageRequest) (*SendChatMessageResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SendChatMessage not implemented")
 }
@@ -214,6 +319,9 @@ func (UnimplementedApplicationServiceServer) GetStamps(context.Context, *GetStam
 }
 func (UnimplementedApplicationServiceServer) AddStampToPost(context.Context, *AddStampToPostRequest) (*AddStampToPostResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AddStampToPost not implemented")
+}
+func (UnimplementedApplicationServiceServer) SendDirectMessageToCommunityMember(context.Context, *SendDirectMessageToCommunityMemberRequest) (*SendDirectMessageToCommunityMemberResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SendDirectMessageToCommunityMember not implemented")
 }
 func (UnimplementedApplicationServiceServer) mustEmbedUnimplementedApplicationServiceServer() {}
 func (UnimplementedApplicationServiceServer) testEmbeddedByValue()                            {}
@@ -268,6 +376,24 @@ func _ApplicationService_GetPosts_Handler(srv interface{}, ctx context.Context, 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ApplicationServiceServer).GetPosts(ctx, req.(*GetPostsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ApplicationService_GetCommunities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCommunitiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServiceServer).GetCommunities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ApplicationService_GetCommunities_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServiceServer).GetCommunities(ctx, req.(*GetCommunitiesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -344,6 +470,78 @@ func _ApplicationService_GetPostMediaStatus_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ApplicationService_GetCommunityTimeline_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCommunityTimelineRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServiceServer).GetCommunityTimeline(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ApplicationService_GetCommunityTimeline_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServiceServer).GetCommunityTimeline(ctx, req.(*GetCommunityTimelineRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ApplicationService_GetCommunityMemberList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCommunityMemberListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServiceServer).GetCommunityMemberList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ApplicationService_GetCommunityMemberList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServiceServer).GetCommunityMemberList(ctx, req.(*GetCommunityMemberListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ApplicationService_RestrictCommunityPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RestrictCommunityPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServiceServer).RestrictCommunityPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ApplicationService_RestrictCommunityPost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServiceServer).RestrictCommunityPost(ctx, req.(*RestrictCommunityPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ApplicationService_GetCommunitiesUsingApplication_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCommunitiesUsingApplicationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServiceServer).GetCommunitiesUsingApplication(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ApplicationService_GetCommunitiesUsingApplication_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServiceServer).GetCommunitiesUsingApplication(ctx, req.(*GetCommunitiesUsingApplicationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ApplicationService_SendChatMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SendChatMessageRequest)
 	if err := dec(in); err != nil {
@@ -398,6 +596,24 @@ func _ApplicationService_AddStampToPost_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ApplicationService_SendDirectMessageToCommunityMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendDirectMessageToCommunityMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServiceServer).SendDirectMessageToCommunityMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ApplicationService_SendDirectMessageToCommunityMember_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServiceServer).SendDirectMessageToCommunityMember(ctx, req.(*SendDirectMessageToCommunityMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ApplicationService_ServiceDesc is the grpc.ServiceDesc for ApplicationService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -412,6 +628,10 @@ var ApplicationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPosts",
 			Handler:    _ApplicationService_GetPosts_Handler,
+		},
+		{
+			MethodName: "GetCommunities",
+			Handler:    _ApplicationService_GetCommunities_Handler,
 		},
 		{
 			MethodName: "CreatePost",
@@ -430,6 +650,22 @@ var ApplicationService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ApplicationService_GetPostMediaStatus_Handler,
 		},
 		{
+			MethodName: "GetCommunityTimeline",
+			Handler:    _ApplicationService_GetCommunityTimeline_Handler,
+		},
+		{
+			MethodName: "GetCommunityMemberList",
+			Handler:    _ApplicationService_GetCommunityMemberList_Handler,
+		},
+		{
+			MethodName: "RestrictCommunityPost",
+			Handler:    _ApplicationService_RestrictCommunityPost_Handler,
+		},
+		{
+			MethodName: "GetCommunitiesUsingApplication",
+			Handler:    _ApplicationService_GetCommunitiesUsingApplication_Handler,
+		},
+		{
 			MethodName: "SendChatMessage",
 			Handler:    _ApplicationService_SendChatMessage_Handler,
 		},
@@ -440,6 +676,10 @@ var ApplicationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddStampToPost",
 			Handler:    _ApplicationService_AddStampToPost_Handler,
+		},
+		{
+			MethodName: "SendDirectMessageToCommunityMember",
+			Handler:    _ApplicationService_SendDirectMessageToCommunityMember_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

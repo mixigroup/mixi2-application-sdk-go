@@ -196,6 +196,125 @@ func (x *OfficialStamp) GetUrl() string {
 	return ""
 }
 
+// コミュニティスタンプセットを表します。
+type CommunityStampSet struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// コミュニティIDです。
+	CommunityId string `protobuf:"bytes,1,opt,name=community_id,json=communityId,proto3" json:"community_id,omitempty"`
+	// コミュニティ固有スタンプの一覧です。
+	Stamps        []*CommunityStamp `protobuf:"bytes,2,rep,name=stamps,proto3" json:"stamps,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommunityStampSet) Reset() {
+	*x = CommunityStampSet{}
+	mi := &file_social_mixi_application_model_v1_stamp_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommunityStampSet) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommunityStampSet) ProtoMessage() {}
+
+func (x *CommunityStampSet) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_model_v1_stamp_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommunityStampSet.ProtoReflect.Descriptor instead.
+func (*CommunityStampSet) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_model_v1_stamp_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CommunityStampSet) GetCommunityId() string {
+	if x != nil {
+		return x.CommunityId
+	}
+	return ""
+}
+
+func (x *CommunityStampSet) GetStamps() []*CommunityStamp {
+	if x != nil {
+		return x.Stamps
+	}
+	return nil
+}
+
+// コミュニティスタンプを表します。
+type CommunityStamp struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// スタンプIDです。
+	StampId string `protobuf:"bytes,1,opt,name=stamp_id,json=stampId,proto3" json:"stamp_id,omitempty"`
+	// スタンプの画像のURLです。
+	Url string `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
+	// スタンプの検索用タグの一覧です。
+	SearchTags    []string `protobuf:"bytes,3,rep,name=search_tags,json=searchTags,proto3" json:"search_tags,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommunityStamp) Reset() {
+	*x = CommunityStamp{}
+	mi := &file_social_mixi_application_model_v1_stamp_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommunityStamp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommunityStamp) ProtoMessage() {}
+
+func (x *CommunityStamp) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_model_v1_stamp_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommunityStamp.ProtoReflect.Descriptor instead.
+func (*CommunityStamp) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_model_v1_stamp_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CommunityStamp) GetStampId() string {
+	if x != nil {
+		return x.StampId
+	}
+	return ""
+}
+
+func (x *CommunityStamp) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
+func (x *CommunityStamp) GetSearchTags() []string {
+	if x != nil {
+		return x.SearchTags
+	}
+	return nil
+}
+
 var File_social_mixi_application_model_v1_stamp_proto protoreflect.FileDescriptor
 
 const file_social_mixi_application_model_v1_stamp_proto_rawDesc = "" +
@@ -218,7 +337,15 @@ const file_social_mixi_application_model_v1_stamp_proto_rawDesc = "" +
 	"\x05index\x18\x02 \x01(\rR\x05index\x12\x1f\n" +
 	"\vsearch_tags\x18\x03 \x03(\tR\n" +
 	"searchTags\x12\x10\n" +
-	"\x03url\x18\x04 \x01(\tR\x03urlB\xb6\x02\n" +
+	"\x03url\x18\x04 \x01(\tR\x03url\"\x80\x01\n" +
+	"\x11CommunityStampSet\x12!\n" +
+	"\fcommunity_id\x18\x01 \x01(\tR\vcommunityId\x12H\n" +
+	"\x06stamps\x18\x02 \x03(\v20.social.mixi.application.model.v1.CommunityStampR\x06stamps\"^\n" +
+	"\x0eCommunityStamp\x12\x19\n" +
+	"\bstamp_id\x18\x01 \x01(\tR\astampId\x12\x10\n" +
+	"\x03url\x18\x02 \x01(\tR\x03url\x12\x1f\n" +
+	"\vsearch_tags\x18\x03 \x03(\tR\n" +
+	"searchTagsB\xb6\x02\n" +
 	"$com.social.mixi.application.model.v1B\n" +
 	"StampProtoP\x01Z]github.com/mixigroup/mixi2-application-sdk-go/gen/go/social/mixi/application/model/v1;modelv1\xa2\x02\x04SMAM\xaa\x02 Social.Mixi.Application.Model.V1\xca\x02 Social\\Mixi\\Application\\Model\\V1\xe2\x02,Social\\Mixi\\Application\\Model\\V1\\GPBMetadata\xea\x02$Social::Mixi::Application::Model::V1b\x06proto3"
 
@@ -234,23 +361,26 @@ func file_social_mixi_application_model_v1_stamp_proto_rawDescGZIP() []byte {
 	return file_social_mixi_application_model_v1_stamp_proto_rawDescData
 }
 
-var file_social_mixi_application_model_v1_stamp_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_social_mixi_application_model_v1_stamp_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_social_mixi_application_model_v1_stamp_proto_goTypes = []any{
 	(*OfficialStampSet)(nil),      // 0: social.mixi.application.model.v1.OfficialStampSet
 	(*OfficialStamp)(nil),         // 1: social.mixi.application.model.v1.OfficialStamp
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
-	(v1.StampSetType)(0),          // 3: social.mixi.application.const.v1.StampSetType
+	(*CommunityStampSet)(nil),     // 2: social.mixi.application.model.v1.CommunityStampSet
+	(*CommunityStamp)(nil),        // 3: social.mixi.application.model.v1.CommunityStamp
+	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
+	(v1.StampSetType)(0),          // 5: social.mixi.application.const.v1.StampSetType
 }
 var file_social_mixi_application_model_v1_stamp_proto_depIdxs = []int32{
 	1, // 0: social.mixi.application.model.v1.OfficialStampSet.stamps:type_name -> social.mixi.application.model.v1.OfficialStamp
-	2, // 1: social.mixi.application.model.v1.OfficialStampSet.start_at:type_name -> google.protobuf.Timestamp
-	2, // 2: social.mixi.application.model.v1.OfficialStampSet.end_at:type_name -> google.protobuf.Timestamp
-	3, // 3: social.mixi.application.model.v1.OfficialStampSet.stamp_set_type:type_name -> social.mixi.application.const.v1.StampSetType
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	4, // 1: social.mixi.application.model.v1.OfficialStampSet.start_at:type_name -> google.protobuf.Timestamp
+	4, // 2: social.mixi.application.model.v1.OfficialStampSet.end_at:type_name -> google.protobuf.Timestamp
+	5, // 3: social.mixi.application.model.v1.OfficialStampSet.stamp_set_type:type_name -> social.mixi.application.const.v1.StampSetType
+	3, // 4: social.mixi.application.model.v1.CommunityStampSet.stamps:type_name -> social.mixi.application.model.v1.CommunityStamp
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_social_mixi_application_model_v1_stamp_proto_init() }
@@ -265,7 +395,7 @@ func file_social_mixi_application_model_v1_stamp_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_social_mixi_application_model_v1_stamp_proto_rawDesc), len(file_social_mixi_application_model_v1_stamp_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

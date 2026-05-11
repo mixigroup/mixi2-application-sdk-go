@@ -35,7 +35,9 @@ type Event struct {
 	//
 	//	*Event_PingEvent
 	//	*Event_PostCreatedEvent
+	//	*Event_CommunityMemberChangedEvent
 	//	*Event_ChatMessageReceivedEvent
+	//	*Event_CommunityPluginManagedEvent
 	Body          isEvent_Body `protobuf_oneof:"body"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -110,10 +112,28 @@ func (x *Event) GetPostCreatedEvent() *PostCreatedEvent {
 	return nil
 }
 
+func (x *Event) GetCommunityMemberChangedEvent() *CommunityMemberChangedEvent {
+	if x != nil {
+		if x, ok := x.Body.(*Event_CommunityMemberChangedEvent); ok {
+			return x.CommunityMemberChangedEvent
+		}
+	}
+	return nil
+}
+
 func (x *Event) GetChatMessageReceivedEvent() *ChatMessageReceivedEvent {
 	if x != nil {
 		if x, ok := x.Body.(*Event_ChatMessageReceivedEvent); ok {
 			return x.ChatMessageReceivedEvent
+		}
+	}
+	return nil
+}
+
+func (x *Event) GetCommunityPluginManagedEvent() *CommunityPluginManagedEvent {
+	if x != nil {
+		if x, ok := x.Body.(*Event_CommunityPluginManagedEvent); ok {
+			return x.CommunityPluginManagedEvent
 		}
 	}
 	return nil
@@ -133,16 +153,30 @@ type Event_PostCreatedEvent struct {
 	PostCreatedEvent *PostCreatedEvent `protobuf:"bytes,4,opt,name=post_created_event,json=postCreatedEvent,proto3,oneof"`
 }
 
+type Event_CommunityMemberChangedEvent struct {
+	// event_type が EVENT_TYPE_COMMUNITY_MEMBER_CHANGED の場合に設定されます。
+	CommunityMemberChangedEvent *CommunityMemberChangedEvent `protobuf:"bytes,5,opt,name=community_member_changed_event,json=communityMemberChangedEvent,proto3,oneof"`
+}
+
 type Event_ChatMessageReceivedEvent struct {
 	// event_type が EVENT_TYPE_CHAT_MESSAGE_RECEIVED の場合に設定されます。
 	ChatMessageReceivedEvent *ChatMessageReceivedEvent `protobuf:"bytes,6,opt,name=chat_message_received_event,json=chatMessageReceivedEvent,proto3,oneof"`
+}
+
+type Event_CommunityPluginManagedEvent struct {
+	// event_type が EVENT_TYPE_COMMUNITY_PLUGIN_MANAGED の場合に設定されます。
+	CommunityPluginManagedEvent *CommunityPluginManagedEvent `protobuf:"bytes,7,opt,name=community_plugin_managed_event,json=communityPluginManagedEvent,proto3,oneof"`
 }
 
 func (*Event_PingEvent) isEvent_Body() {}
 
 func (*Event_PostCreatedEvent) isEvent_Body() {}
 
+func (*Event_CommunityMemberChangedEvent) isEvent_Body() {}
+
 func (*Event_ChatMessageReceivedEvent) isEvent_Body() {}
+
+func (*Event_CommunityPluginManagedEvent) isEvent_Body() {}
 
 // 疎通確認用のイベントです。
 type PingEvent struct {
@@ -189,9 +223,11 @@ type PostCreatedEvent struct {
 	// 作成されたポストの情報です。
 	Post *Post `protobuf:"bytes,2,opt,name=post,proto3" json:"post,omitempty"`
 	// ポストしたユーザーの情報です。
-	Issuer        *User `protobuf:"bytes,3,opt,name=issuer,proto3" json:"issuer,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Issuer *User `protobuf:"bytes,3,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	// コミュニティの情報です。
+	PostedCommunity *Community `protobuf:"bytes,4,opt,name=posted_community,json=postedCommunity,proto3,oneof" json:"posted_community,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *PostCreatedEvent) Reset() {
@@ -245,6 +281,77 @@ func (x *PostCreatedEvent) GetIssuer() *User {
 	return nil
 }
 
+func (x *PostCreatedEvent) GetPostedCommunity() *Community {
+	if x != nil {
+		return x.PostedCommunity
+	}
+	return nil
+}
+
+// コミュニティメンバーの増減を通知するイベントです。
+type CommunityMemberChangedEvent struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// イベントが発生した理由を示します。
+	EventReasonList []v1.EventReason `protobuf:"varint,1,rep,packed,name=event_reason_list,json=eventReasonList,proto3,enum=social.mixi.application.const.v1.EventReason" json:"event_reason_list,omitempty"`
+	// コミュニティに参加/退出したユーザーの情報です。
+	Member *User `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
+	// コミュニティの情報です。
+	Community     *Community `protobuf:"bytes,3,opt,name=community,proto3" json:"community,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommunityMemberChangedEvent) Reset() {
+	*x = CommunityMemberChangedEvent{}
+	mi := &file_social_mixi_application_model_v1_event_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommunityMemberChangedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommunityMemberChangedEvent) ProtoMessage() {}
+
+func (x *CommunityMemberChangedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_model_v1_event_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommunityMemberChangedEvent.ProtoReflect.Descriptor instead.
+func (*CommunityMemberChangedEvent) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_model_v1_event_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CommunityMemberChangedEvent) GetEventReasonList() []v1.EventReason {
+	if x != nil {
+		return x.EventReasonList
+	}
+	return nil
+}
+
+func (x *CommunityMemberChangedEvent) GetMember() *User {
+	if x != nil {
+		return x.Member
+	}
+	return nil
+}
+
+func (x *CommunityMemberChangedEvent) GetCommunity() *Community {
+	if x != nil {
+		return x.Community
+	}
+	return nil
+}
+
 // チャットメッセージを受信したことを通知するイベントです。
 type ChatMessageReceivedEvent struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -260,7 +367,7 @@ type ChatMessageReceivedEvent struct {
 
 func (x *ChatMessageReceivedEvent) Reset() {
 	*x = ChatMessageReceivedEvent{}
-	mi := &file_social_mixi_application_model_v1_event_proto_msgTypes[3]
+	mi := &file_social_mixi_application_model_v1_event_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -272,7 +379,7 @@ func (x *ChatMessageReceivedEvent) String() string {
 func (*ChatMessageReceivedEvent) ProtoMessage() {}
 
 func (x *ChatMessageReceivedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_model_v1_event_proto_msgTypes[3]
+	mi := &file_social_mixi_application_model_v1_event_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -285,7 +392,7 @@ func (x *ChatMessageReceivedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChatMessageReceivedEvent.ProtoReflect.Descriptor instead.
 func (*ChatMessageReceivedEvent) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_model_v1_event_proto_rawDescGZIP(), []int{3}
+	return file_social_mixi_application_model_v1_event_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ChatMessageReceivedEvent) GetEventReasonList() []v1.EventReason {
@@ -309,29 +416,95 @@ func (x *ChatMessageReceivedEvent) GetIssuer() *User {
 	return nil
 }
 
+// コミュニティにプラグインがインストール/アンインストールされたことを通知するイベントです。
+type CommunityPluginManagedEvent struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// イベントが発生した理由を示します。
+	EventReasonList []v1.EventReason `protobuf:"varint,1,rep,packed,name=event_reason_list,json=eventReasonList,proto3,enum=social.mixi.application.const.v1.EventReason" json:"event_reason_list,omitempty"`
+	// コミュニティの情報です。
+	Community     *Community `protobuf:"bytes,2,opt,name=community,proto3" json:"community,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommunityPluginManagedEvent) Reset() {
+	*x = CommunityPluginManagedEvent{}
+	mi := &file_social_mixi_application_model_v1_event_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommunityPluginManagedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommunityPluginManagedEvent) ProtoMessage() {}
+
+func (x *CommunityPluginManagedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_model_v1_event_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommunityPluginManagedEvent.ProtoReflect.Descriptor instead.
+func (*CommunityPluginManagedEvent) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_model_v1_event_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CommunityPluginManagedEvent) GetEventReasonList() []v1.EventReason {
+	if x != nil {
+		return x.EventReasonList
+	}
+	return nil
+}
+
+func (x *CommunityPluginManagedEvent) GetCommunity() *Community {
+	if x != nil {
+		return x.Community
+	}
+	return nil
+}
+
 var File_social_mixi_application_model_v1_event_proto protoreflect.FileDescriptor
 
 const file_social_mixi_application_model_v1_event_proto_rawDesc = "" +
 	"\n" +
-	",social/mixi/application/model/v1/event.proto\x12 social.mixi.application.model.v1\x1a1social/mixi/application/const/v1/event_type.proto\x1a.social/mixi/application/model/v1/message.proto\x1a+social/mixi/application/model/v1/post.proto\x1a+social/mixi/application/model/v1/user.proto\"\xa5\x03\n" +
+	",social/mixi/application/model/v1/event.proto\x12 social.mixi.application.model.v1\x1a1social/mixi/application/const/v1/event_type.proto\x1a0social/mixi/application/model/v1/community.proto\x1a.social/mixi/application/model/v1/message.proto\x1a+social/mixi/application/model/v1/post.proto\x1a+social/mixi/application/model/v1/user.proto\"\xb3\x05\n" +
 	"\x05Event\x12\x19\n" +
 	"\bevent_id\x18\x01 \x01(\tR\aeventId\x12J\n" +
 	"\n" +
 	"event_type\x18\x02 \x01(\x0e2+.social.mixi.application.const.v1.EventTypeR\teventType\x12L\n" +
 	"\n" +
 	"ping_event\x18\x03 \x01(\v2+.social.mixi.application.model.v1.PingEventH\x00R\tpingEvent\x12b\n" +
-	"\x12post_created_event\x18\x04 \x01(\v22.social.mixi.application.model.v1.PostCreatedEventH\x00R\x10postCreatedEvent\x12{\n" +
-	"\x1bchat_message_received_event\x18\x06 \x01(\v2:.social.mixi.application.model.v1.ChatMessageReceivedEventH\x00R\x18chatMessageReceivedEventB\x06\n" +
+	"\x12post_created_event\x18\x04 \x01(\v22.social.mixi.application.model.v1.PostCreatedEventH\x00R\x10postCreatedEvent\x12\x84\x01\n" +
+	"\x1ecommunity_member_changed_event\x18\x05 \x01(\v2=.social.mixi.application.model.v1.CommunityMemberChangedEventH\x00R\x1bcommunityMemberChangedEvent\x12{\n" +
+	"\x1bchat_message_received_event\x18\x06 \x01(\v2:.social.mixi.application.model.v1.ChatMessageReceivedEventH\x00R\x18chatMessageReceivedEvent\x12\x84\x01\n" +
+	"\x1ecommunity_plugin_managed_event\x18\a \x01(\v2=.social.mixi.application.model.v1.CommunityPluginManagedEventH\x00R\x1bcommunityPluginManagedEventB\x06\n" +
 	"\x04body\"\v\n" +
-	"\tPingEvent\"\xe9\x01\n" +
+	"\tPingEvent\"\xdb\x02\n" +
 	"\x10PostCreatedEvent\x12Y\n" +
 	"\x11event_reason_list\x18\x01 \x03(\x0e2-.social.mixi.application.const.v1.EventReasonR\x0feventReasonList\x12:\n" +
 	"\x04post\x18\x02 \x01(\v2&.social.mixi.application.model.v1.PostR\x04post\x12>\n" +
-	"\x06issuer\x18\x03 \x01(\v2&.social.mixi.application.model.v1.UserR\x06issuer\"\xfe\x01\n" +
+	"\x06issuer\x18\x03 \x01(\v2&.social.mixi.application.model.v1.UserR\x06issuer\x12[\n" +
+	"\x10posted_community\x18\x04 \x01(\v2+.social.mixi.application.model.v1.CommunityH\x00R\x0fpostedCommunity\x88\x01\x01B\x13\n" +
+	"\x11_posted_community\"\x83\x02\n" +
+	"\x1bCommunityMemberChangedEvent\x12Y\n" +
+	"\x11event_reason_list\x18\x01 \x03(\x0e2-.social.mixi.application.const.v1.EventReasonR\x0feventReasonList\x12>\n" +
+	"\x06member\x18\x02 \x01(\v2&.social.mixi.application.model.v1.UserR\x06member\x12I\n" +
+	"\tcommunity\x18\x03 \x01(\v2+.social.mixi.application.model.v1.CommunityR\tcommunity\"\xfe\x01\n" +
 	"\x18ChatMessageReceivedEvent\x12Y\n" +
 	"\x11event_reason_list\x18\x01 \x03(\x0e2-.social.mixi.application.const.v1.EventReasonR\x0feventReasonList\x12G\n" +
 	"\amessage\x18\x02 \x01(\v2-.social.mixi.application.model.v1.ChatMessageR\amessage\x12>\n" +
-	"\x06issuer\x18\x03 \x01(\v2&.social.mixi.application.model.v1.UserR\x06issuerB\xb6\x02\n" +
+	"\x06issuer\x18\x03 \x01(\v2&.social.mixi.application.model.v1.UserR\x06issuer\"\xc3\x01\n" +
+	"\x1bCommunityPluginManagedEvent\x12Y\n" +
+	"\x11event_reason_list\x18\x01 \x03(\x0e2-.social.mixi.application.const.v1.EventReasonR\x0feventReasonList\x12I\n" +
+	"\tcommunity\x18\x02 \x01(\v2+.social.mixi.application.model.v1.CommunityR\tcommunityB\xb6\x02\n" +
 	"$com.social.mixi.application.model.v1B\n" +
 	"EventProtoP\x01Z]github.com/mixigroup/mixi2-application-sdk-go/gen/go/social/mixi/application/model/v1;modelv1\xa2\x02\x04SMAM\xaa\x02 Social.Mixi.Application.Model.V1\xca\x02 Social\\Mixi\\Application\\Model\\V1\xe2\x02,Social\\Mixi\\Application\\Model\\V1\\GPBMetadata\xea\x02$Social::Mixi::Application::Model::V1b\x06proto3"
 
@@ -347,34 +520,45 @@ func file_social_mixi_application_model_v1_event_proto_rawDescGZIP() []byte {
 	return file_social_mixi_application_model_v1_event_proto_rawDescData
 }
 
-var file_social_mixi_application_model_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_social_mixi_application_model_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_social_mixi_application_model_v1_event_proto_goTypes = []any{
-	(*Event)(nil),                    // 0: social.mixi.application.model.v1.Event
-	(*PingEvent)(nil),                // 1: social.mixi.application.model.v1.PingEvent
-	(*PostCreatedEvent)(nil),         // 2: social.mixi.application.model.v1.PostCreatedEvent
-	(*ChatMessageReceivedEvent)(nil), // 3: social.mixi.application.model.v1.ChatMessageReceivedEvent
-	(v1.EventType)(0),                // 4: social.mixi.application.const.v1.EventType
-	(v1.EventReason)(0),              // 5: social.mixi.application.const.v1.EventReason
-	(*Post)(nil),                     // 6: social.mixi.application.model.v1.Post
-	(*User)(nil),                     // 7: social.mixi.application.model.v1.User
-	(*ChatMessage)(nil),              // 8: social.mixi.application.model.v1.ChatMessage
+	(*Event)(nil),                       // 0: social.mixi.application.model.v1.Event
+	(*PingEvent)(nil),                   // 1: social.mixi.application.model.v1.PingEvent
+	(*PostCreatedEvent)(nil),            // 2: social.mixi.application.model.v1.PostCreatedEvent
+	(*CommunityMemberChangedEvent)(nil), // 3: social.mixi.application.model.v1.CommunityMemberChangedEvent
+	(*ChatMessageReceivedEvent)(nil),    // 4: social.mixi.application.model.v1.ChatMessageReceivedEvent
+	(*CommunityPluginManagedEvent)(nil), // 5: social.mixi.application.model.v1.CommunityPluginManagedEvent
+	(v1.EventType)(0),                   // 6: social.mixi.application.const.v1.EventType
+	(v1.EventReason)(0),                 // 7: social.mixi.application.const.v1.EventReason
+	(*Post)(nil),                        // 8: social.mixi.application.model.v1.Post
+	(*User)(nil),                        // 9: social.mixi.application.model.v1.User
+	(*Community)(nil),                   // 10: social.mixi.application.model.v1.Community
+	(*ChatMessage)(nil),                 // 11: social.mixi.application.model.v1.ChatMessage
 }
 var file_social_mixi_application_model_v1_event_proto_depIdxs = []int32{
-	4,  // 0: social.mixi.application.model.v1.Event.event_type:type_name -> social.mixi.application.const.v1.EventType
+	6,  // 0: social.mixi.application.model.v1.Event.event_type:type_name -> social.mixi.application.const.v1.EventType
 	1,  // 1: social.mixi.application.model.v1.Event.ping_event:type_name -> social.mixi.application.model.v1.PingEvent
 	2,  // 2: social.mixi.application.model.v1.Event.post_created_event:type_name -> social.mixi.application.model.v1.PostCreatedEvent
-	3,  // 3: social.mixi.application.model.v1.Event.chat_message_received_event:type_name -> social.mixi.application.model.v1.ChatMessageReceivedEvent
-	5,  // 4: social.mixi.application.model.v1.PostCreatedEvent.event_reason_list:type_name -> social.mixi.application.const.v1.EventReason
-	6,  // 5: social.mixi.application.model.v1.PostCreatedEvent.post:type_name -> social.mixi.application.model.v1.Post
-	7,  // 6: social.mixi.application.model.v1.PostCreatedEvent.issuer:type_name -> social.mixi.application.model.v1.User
-	5,  // 7: social.mixi.application.model.v1.ChatMessageReceivedEvent.event_reason_list:type_name -> social.mixi.application.const.v1.EventReason
-	8,  // 8: social.mixi.application.model.v1.ChatMessageReceivedEvent.message:type_name -> social.mixi.application.model.v1.ChatMessage
-	7,  // 9: social.mixi.application.model.v1.ChatMessageReceivedEvent.issuer:type_name -> social.mixi.application.model.v1.User
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	3,  // 3: social.mixi.application.model.v1.Event.community_member_changed_event:type_name -> social.mixi.application.model.v1.CommunityMemberChangedEvent
+	4,  // 4: social.mixi.application.model.v1.Event.chat_message_received_event:type_name -> social.mixi.application.model.v1.ChatMessageReceivedEvent
+	5,  // 5: social.mixi.application.model.v1.Event.community_plugin_managed_event:type_name -> social.mixi.application.model.v1.CommunityPluginManagedEvent
+	7,  // 6: social.mixi.application.model.v1.PostCreatedEvent.event_reason_list:type_name -> social.mixi.application.const.v1.EventReason
+	8,  // 7: social.mixi.application.model.v1.PostCreatedEvent.post:type_name -> social.mixi.application.model.v1.Post
+	9,  // 8: social.mixi.application.model.v1.PostCreatedEvent.issuer:type_name -> social.mixi.application.model.v1.User
+	10, // 9: social.mixi.application.model.v1.PostCreatedEvent.posted_community:type_name -> social.mixi.application.model.v1.Community
+	7,  // 10: social.mixi.application.model.v1.CommunityMemberChangedEvent.event_reason_list:type_name -> social.mixi.application.const.v1.EventReason
+	9,  // 11: social.mixi.application.model.v1.CommunityMemberChangedEvent.member:type_name -> social.mixi.application.model.v1.User
+	10, // 12: social.mixi.application.model.v1.CommunityMemberChangedEvent.community:type_name -> social.mixi.application.model.v1.Community
+	7,  // 13: social.mixi.application.model.v1.ChatMessageReceivedEvent.event_reason_list:type_name -> social.mixi.application.const.v1.EventReason
+	11, // 14: social.mixi.application.model.v1.ChatMessageReceivedEvent.message:type_name -> social.mixi.application.model.v1.ChatMessage
+	9,  // 15: social.mixi.application.model.v1.ChatMessageReceivedEvent.issuer:type_name -> social.mixi.application.model.v1.User
+	7,  // 16: social.mixi.application.model.v1.CommunityPluginManagedEvent.event_reason_list:type_name -> social.mixi.application.const.v1.EventReason
+	10, // 17: social.mixi.application.model.v1.CommunityPluginManagedEvent.community:type_name -> social.mixi.application.model.v1.Community
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_social_mixi_application_model_v1_event_proto_init() }
@@ -382,21 +566,25 @@ func file_social_mixi_application_model_v1_event_proto_init() {
 	if File_social_mixi_application_model_v1_event_proto != nil {
 		return
 	}
+	file_social_mixi_application_model_v1_community_proto_init()
 	file_social_mixi_application_model_v1_message_proto_init()
 	file_social_mixi_application_model_v1_post_proto_init()
 	file_social_mixi_application_model_v1_user_proto_init()
 	file_social_mixi_application_model_v1_event_proto_msgTypes[0].OneofWrappers = []any{
 		(*Event_PingEvent)(nil),
 		(*Event_PostCreatedEvent)(nil),
+		(*Event_CommunityMemberChangedEvent)(nil),
 		(*Event_ChatMessageReceivedEvent)(nil),
+		(*Event_CommunityPluginManagedEvent)(nil),
 	}
+	file_social_mixi_application_model_v1_event_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_social_mixi_application_model_v1_event_proto_rawDesc), len(file_social_mixi_application_model_v1_event_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
