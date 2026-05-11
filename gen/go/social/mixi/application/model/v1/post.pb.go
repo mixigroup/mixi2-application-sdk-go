@@ -42,6 +42,8 @@ type Post struct {
 	InReplyToPostId *string `protobuf:"bytes,7,opt,name=in_reply_to_post_id,json=inReplyToPostId,proto3,oneof" json:"in_reply_to_post_id,omitempty"`
 	// ポストに適用されるマスク情報です。
 	PostMask *PostMask `protobuf:"bytes,8,opt,name=post_mask,json=postMask,proto3,oneof" json:"post_mask,omitempty"`
+	// ポストが投稿されたコミュニティIDです。
+	CommunityId *string `protobuf:"bytes,9,opt,name=community_id,json=communityId,proto3,oneof" json:"community_id,omitempty"`
 	// ポストを閲覧可能かどうかを示します。
 	Visibility v1.PostVisibility `protobuf:"varint,10,opt,name=visibility,proto3,enum=social.mixi.application.const.v1.PostVisibility" json:"visibility,omitempty"`
 	// ポストの公開設定を示します。
@@ -138,6 +140,13 @@ func (x *Post) GetPostMask() *PostMask {
 		return x.PostMask
 	}
 	return nil
+}
+
+func (x *Post) GetCommunityId() string {
+	if x != nil && x.CommunityId != nil {
+		return *x.CommunityId
+	}
+	return ""
 }
 
 func (x *Post) GetVisibility() v1.PostVisibility {
@@ -605,7 +614,7 @@ var File_social_mixi_application_model_v1_post_proto protoreflect.FileDescriptor
 
 const file_social_mixi_application_model_v1_post_proto_rawDesc = "" +
 	"\n" +
-	"+social/mixi/application/model/v1/post.proto\x12 social.mixi.application.model.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8social/mixi/application/const/v1/post_access_level.proto\x1a5social/mixi/application/const/v1/post_mask_type.proto\x1a6social/mixi/application/const/v1/post_media_type.proto\x1a6social/mixi/application/const/v1/post_visibility.proto\x1a,social/mixi/application/model/v1/media.proto\"\xd6\x05\n" +
+	"+social/mixi/application/model/v1/post.proto\x12 social.mixi.application.model.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8social/mixi/application/const/v1/post_access_level.proto\x1a5social/mixi/application/const/v1/post_mask_type.proto\x1a6social/mixi/application/const/v1/post_media_type.proto\x1a6social/mixi/application/const/v1/post_visibility.proto\x1a,social/mixi/application/model/v1/media.proto\"\x8f\x06\n" +
 	"\x04Post\x12\x17\n" +
 	"\apost_id\x18\x01 \x01(\tR\x06postId\x12\x1d\n" +
 	"\n" +
@@ -617,17 +626,19 @@ const file_social_mixi_application_model_v1_post_proto_rawDesc = "" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12S\n" +
 	"\x0fpost_media_list\x18\x06 \x03(\v2+.social.mixi.application.model.v1.PostMediaR\rpostMediaList\x121\n" +
 	"\x13in_reply_to_post_id\x18\a \x01(\tH\x00R\x0finReplyToPostId\x88\x01\x01\x12L\n" +
-	"\tpost_mask\x18\b \x01(\v2*.social.mixi.application.model.v1.PostMaskH\x01R\bpostMask\x88\x01\x01\x12P\n" +
+	"\tpost_mask\x18\b \x01(\v2*.social.mixi.application.model.v1.PostMaskH\x01R\bpostMask\x88\x01\x01\x12&\n" +
+	"\fcommunity_id\x18\t \x01(\tH\x02R\vcommunityId\x88\x01\x01\x12P\n" +
 	"\n" +
 	"visibility\x18\n" +
 	" \x01(\x0e20.social.mixi.application.const.v1.PostVisibilityR\n" +
 	"visibility\x12T\n" +
 	"\faccess_level\x18\v \x01(\x0e21.social.mixi.application.const.v1.PostAccessLevelR\vaccessLevel\x12C\n" +
 	"\x06stamps\x18\f \x03(\v2+.social.mixi.application.model.v1.PostStampR\x06stamps\x12+\n" +
-	"\x0freader_stamp_id\x18\r \x01(\tH\x02R\rreaderStampId\x88\x01\x01B\x16\n" +
+	"\x0freader_stamp_id\x18\r \x01(\tH\x03R\rreaderStampId\x88\x01\x01B\x16\n" +
 	"\x14_in_reply_to_post_idB\f\n" +
 	"\n" +
-	"_post_maskB\x12\n" +
+	"_post_maskB\x0f\n" +
+	"\r_community_idB\x12\n" +
 	"\x10_reader_stamp_id\"\xfa\x01\n" +
 	"\tPostMedia\x12N\n" +
 	"\n" +

@@ -73,7 +73,7 @@ func (x InitiatePostMediaUploadRequest_Type) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use InitiatePostMediaUploadRequest_Type.Descriptor instead.
 func (InitiatePostMediaUploadRequest_Type) EnumDescriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{4, 0}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{6, 0}
 }
 
 // メディアのアップロード/処理状況を表します。
@@ -134,7 +134,7 @@ func (x GetPostMediaStatusResponse_Status) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use GetPostMediaStatusResponse_Status.Descriptor instead.
 func (GetPostMediaStatusResponse_Status) EnumDescriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{7, 0}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{9, 0}
 }
 
 // ユーザー情報取得リクエストです。
@@ -321,6 +321,98 @@ func (x *GetPostsResponse) GetPosts() []*v1.Post {
 	return nil
 }
 
+// コミュニティ情報取得リクエストです。
+type GetCommunitiesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 取得対象のコミュニティIDを指定してください。
+	CommunityIdList []string `protobuf:"bytes,1,rep,name=community_id_list,json=communityIdList,proto3" json:"community_id_list,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *GetCommunitiesRequest) Reset() {
+	*x = GetCommunitiesRequest{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCommunitiesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCommunitiesRequest) ProtoMessage() {}
+
+func (x *GetCommunitiesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCommunitiesRequest.ProtoReflect.Descriptor instead.
+func (*GetCommunitiesRequest) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetCommunitiesRequest) GetCommunityIdList() []string {
+	if x != nil {
+		return x.CommunityIdList
+	}
+	return nil
+}
+
+// コミュニティ情報取得レスポンスです。
+type GetCommunitiesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// コミュニティの一覧です。
+	Communities   []*v1.Community `protobuf:"bytes,1,rep,name=communities,proto3" json:"communities,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCommunitiesResponse) Reset() {
+	*x = GetCommunitiesResponse{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCommunitiesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCommunitiesResponse) ProtoMessage() {}
+
+func (x *GetCommunitiesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCommunitiesResponse.ProtoReflect.Descriptor instead.
+func (*GetCommunitiesResponse) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetCommunitiesResponse) GetCommunities() []*v1.Community {
+	if x != nil {
+		return x.Communities
+	}
+	return nil
+}
+
 // メディアアップロード開始リクエストです。
 type InitiatePostMediaUploadRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -338,7 +430,7 @@ type InitiatePostMediaUploadRequest struct {
 
 func (x *InitiatePostMediaUploadRequest) Reset() {
 	*x = InitiatePostMediaUploadRequest{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[4]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -350,7 +442,7 @@ func (x *InitiatePostMediaUploadRequest) String() string {
 func (*InitiatePostMediaUploadRequest) ProtoMessage() {}
 
 func (x *InitiatePostMediaUploadRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[4]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,7 +455,7 @@ func (x *InitiatePostMediaUploadRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InitiatePostMediaUploadRequest.ProtoReflect.Descriptor instead.
 func (*InitiatePostMediaUploadRequest) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{4}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *InitiatePostMediaUploadRequest) GetContentType() string {
@@ -407,7 +499,7 @@ type InitiatePostMediaUploadResponse struct {
 
 func (x *InitiatePostMediaUploadResponse) Reset() {
 	*x = InitiatePostMediaUploadResponse{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[5]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -419,7 +511,7 @@ func (x *InitiatePostMediaUploadResponse) String() string {
 func (*InitiatePostMediaUploadResponse) ProtoMessage() {}
 
 func (x *InitiatePostMediaUploadResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[5]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -432,7 +524,7 @@ func (x *InitiatePostMediaUploadResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InitiatePostMediaUploadResponse.ProtoReflect.Descriptor instead.
 func (*InitiatePostMediaUploadResponse) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{5}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *InitiatePostMediaUploadResponse) GetMediaId() string {
@@ -460,7 +552,7 @@ type GetPostMediaStatusRequest struct {
 
 func (x *GetPostMediaStatusRequest) Reset() {
 	*x = GetPostMediaStatusRequest{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[6]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -472,7 +564,7 @@ func (x *GetPostMediaStatusRequest) String() string {
 func (*GetPostMediaStatusRequest) ProtoMessage() {}
 
 func (x *GetPostMediaStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[6]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -485,7 +577,7 @@ func (x *GetPostMediaStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPostMediaStatusRequest.ProtoReflect.Descriptor instead.
 func (*GetPostMediaStatusRequest) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{6}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetPostMediaStatusRequest) GetMediaId() string {
@@ -506,7 +598,7 @@ type GetPostMediaStatusResponse struct {
 
 func (x *GetPostMediaStatusResponse) Reset() {
 	*x = GetPostMediaStatusResponse{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[7]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -518,7 +610,7 @@ func (x *GetPostMediaStatusResponse) String() string {
 func (*GetPostMediaStatusResponse) ProtoMessage() {}
 
 func (x *GetPostMediaStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[7]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -531,7 +623,7 @@ func (x *GetPostMediaStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPostMediaStatusResponse.ProtoReflect.Descriptor instead.
 func (*GetPostMediaStatusResponse) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{7}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetPostMediaStatusResponse) GetStatus() GetPostMediaStatusResponse_Status {
@@ -541,6 +633,7 @@ func (x *GetPostMediaStatusResponse) GetStatus() GetPostMediaStatusResponse_Stat
 	return GetPostMediaStatusResponse_STATUS_UNSPECIFIED
 }
 
+// ポスト作成リクエストです。
 // in_reply_to_post_id と quoted_post_id は同時に指定できません。
 type CreatePostRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -550,6 +643,8 @@ type CreatePostRequest struct {
 	InReplyToPostId *string `protobuf:"bytes,2,opt,name=in_reply_to_post_id,json=inReplyToPostId,proto3,oneof" json:"in_reply_to_post_id,omitempty"`
 	// 引用対象ポストIDを指定してください（任意）。
 	QuotedPostId *string `protobuf:"bytes,3,opt,name=quoted_post_id,json=quotedPostId,proto3,oneof" json:"quoted_post_id,omitempty"`
+	// 投稿先コミュニティIDを指定してください（任意）。
+	CommunityId *string `protobuf:"bytes,4,opt,name=community_id,json=communityId,proto3,oneof" json:"community_id,omitempty"`
 	// 添付するメディアID一覧を指定してください（最大4件）。
 	MediaIdList []string `protobuf:"bytes,5,rep,name=media_id_list,json=mediaIdList,proto3" json:"media_id_list,omitempty"`
 	// ポストに適用するマスクを指定してください（任意）。
@@ -562,7 +657,7 @@ type CreatePostRequest struct {
 
 func (x *CreatePostRequest) Reset() {
 	*x = CreatePostRequest{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[8]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -574,7 +669,7 @@ func (x *CreatePostRequest) String() string {
 func (*CreatePostRequest) ProtoMessage() {}
 
 func (x *CreatePostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[8]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -587,7 +682,7 @@ func (x *CreatePostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePostRequest.ProtoReflect.Descriptor instead.
 func (*CreatePostRequest) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{8}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CreatePostRequest) GetText() string {
@@ -607,6 +702,13 @@ func (x *CreatePostRequest) GetInReplyToPostId() string {
 func (x *CreatePostRequest) GetQuotedPostId() string {
 	if x != nil && x.QuotedPostId != nil {
 		return *x.QuotedPostId
+	}
+	return ""
+}
+
+func (x *CreatePostRequest) GetCommunityId() string {
+	if x != nil && x.CommunityId != nil {
+		return *x.CommunityId
 	}
 	return ""
 }
@@ -643,7 +745,7 @@ type CreatePostResponse struct {
 
 func (x *CreatePostResponse) Reset() {
 	*x = CreatePostResponse{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[9]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -655,7 +757,7 @@ func (x *CreatePostResponse) String() string {
 func (*CreatePostResponse) ProtoMessage() {}
 
 func (x *CreatePostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[9]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -668,7 +770,7 @@ func (x *CreatePostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePostResponse.ProtoReflect.Descriptor instead.
 func (*CreatePostResponse) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{9}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CreatePostResponse) GetPost() *v1.Post {
@@ -689,7 +791,7 @@ type DeletePostRequest struct {
 
 func (x *DeletePostRequest) Reset() {
 	*x = DeletePostRequest{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[10]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -701,7 +803,7 @@ func (x *DeletePostRequest) String() string {
 func (*DeletePostRequest) ProtoMessage() {}
 
 func (x *DeletePostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[10]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -714,7 +816,7 @@ func (x *DeletePostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePostRequest.ProtoReflect.Descriptor instead.
 func (*DeletePostRequest) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{10}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeletePostRequest) GetPostId() string {
@@ -735,7 +837,7 @@ type DeletePostResponse struct {
 
 func (x *DeletePostResponse) Reset() {
 	*x = DeletePostResponse{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[11]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -747,7 +849,7 @@ func (x *DeletePostResponse) String() string {
 func (*DeletePostResponse) ProtoMessage() {}
 
 func (x *DeletePostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[11]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -760,7 +862,7 @@ func (x *DeletePostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePostResponse.ProtoReflect.Descriptor instead.
 func (*DeletePostResponse) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{11}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DeletePostResponse) GetDeleted() bool {
@@ -768,6 +870,426 @@ func (x *DeletePostResponse) GetDeleted() bool {
 		return x.Deleted
 	}
 	return false
+}
+
+// コミュニティのタイムライン取得リクエストです。
+// カーソルにはポストIDを指定してください。
+// 未指定の場合は最新のポストから取得します。
+type GetCommunityTimelineRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// タイムラインを取得する対象のコミュニティIDを指定してください。
+	CommunityId string `protobuf:"bytes,1,opt,name=community_id,json=communityId,proto3" json:"community_id,omitempty"`
+	// ページング用カーソルを指定してください（任意）。
+	// 指定したポストより古いポストを返します（指定したポスト自体は含まれません）。
+	UntilCursor *string `protobuf:"bytes,2,opt,name=until_cursor,json=untilCursor,proto3,oneof" json:"until_cursor,omitempty"`
+	// ページング用カーソルを指定してください（任意）。
+	// 指定したポストより新しいポストを返します（指定したポスト自体は含まれません）。
+	SinceCursor   *string `protobuf:"bytes,3,opt,name=since_cursor,json=sinceCursor,proto3,oneof" json:"since_cursor,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCommunityTimelineRequest) Reset() {
+	*x = GetCommunityTimelineRequest{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCommunityTimelineRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCommunityTimelineRequest) ProtoMessage() {}
+
+func (x *GetCommunityTimelineRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCommunityTimelineRequest.ProtoReflect.Descriptor instead.
+func (*GetCommunityTimelineRequest) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *GetCommunityTimelineRequest) GetCommunityId() string {
+	if x != nil {
+		return x.CommunityId
+	}
+	return ""
+}
+
+func (x *GetCommunityTimelineRequest) GetUntilCursor() string {
+	if x != nil && x.UntilCursor != nil {
+		return *x.UntilCursor
+	}
+	return ""
+}
+
+func (x *GetCommunityTimelineRequest) GetSinceCursor() string {
+	if x != nil && x.SinceCursor != nil {
+		return *x.SinceCursor
+	}
+	return ""
+}
+
+// コミュニティのタイムライン取得レスポンスです。
+type GetCommunityTimelineResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// コミュニティのタイムライン上のポスト一覧です。
+	Posts         []*v1.Post `protobuf:"bytes,1,rep,name=posts,proto3" json:"posts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCommunityTimelineResponse) Reset() {
+	*x = GetCommunityTimelineResponse{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCommunityTimelineResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCommunityTimelineResponse) ProtoMessage() {}
+
+func (x *GetCommunityTimelineResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCommunityTimelineResponse.ProtoReflect.Descriptor instead.
+func (*GetCommunityTimelineResponse) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetCommunityTimelineResponse) GetPosts() []*v1.Post {
+	if x != nil {
+		return x.Posts
+	}
+	return nil
+}
+
+// コミュニティのメンバー一覧取得リクエストです。
+type GetCommunityMemberListRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// メンバー一覧を取得する対象のコミュニティIDを指定してください。
+	CommunityId string `protobuf:"bytes,1,opt,name=community_id,json=communityId,proto3" json:"community_id,omitempty"`
+	// ページング用カーソルを指定してください（任意）。
+	// 指定したカーソルの次のページを取得します。
+	// カーソルには next_pagination_cursor を使用します。
+	PaginationCursor *string `protobuf:"bytes,2,opt,name=pagination_cursor,json=paginationCursor,proto3,oneof" json:"pagination_cursor,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *GetCommunityMemberListRequest) Reset() {
+	*x = GetCommunityMemberListRequest{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCommunityMemberListRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCommunityMemberListRequest) ProtoMessage() {}
+
+func (x *GetCommunityMemberListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCommunityMemberListRequest.ProtoReflect.Descriptor instead.
+func (*GetCommunityMemberListRequest) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetCommunityMemberListRequest) GetCommunityId() string {
+	if x != nil {
+		return x.CommunityId
+	}
+	return ""
+}
+
+func (x *GetCommunityMemberListRequest) GetPaginationCursor() string {
+	if x != nil && x.PaginationCursor != nil {
+		return *x.PaginationCursor
+	}
+	return ""
+}
+
+// コミュニティのメンバー一覧取得レスポンスです。
+type GetCommunityMemberListResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// コミュニティメンバーの一覧です。
+	Members []*v1.User `protobuf:"bytes,1,rep,name=members,proto3" json:"members,omitempty"`
+	// 次ページ取得用のページングカーソルです。
+	NextPaginationCursor *string `protobuf:"bytes,2,opt,name=next_pagination_cursor,json=nextPaginationCursor,proto3,oneof" json:"next_pagination_cursor,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *GetCommunityMemberListResponse) Reset() {
+	*x = GetCommunityMemberListResponse{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCommunityMemberListResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCommunityMemberListResponse) ProtoMessage() {}
+
+func (x *GetCommunityMemberListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCommunityMemberListResponse.ProtoReflect.Descriptor instead.
+func (*GetCommunityMemberListResponse) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetCommunityMemberListResponse) GetMembers() []*v1.User {
+	if x != nil {
+		return x.Members
+	}
+	return nil
+}
+
+func (x *GetCommunityMemberListResponse) GetNextPaginationCursor() string {
+	if x != nil && x.NextPaginationCursor != nil {
+		return *x.NextPaginationCursor
+	}
+	return ""
+}
+
+// コミュニティポスト制限リクエストです。
+// 指定したポストをコミュニティのタイムラインから非表示にします。ポストが削除されるわけではありません。
+type RestrictCommunityPostRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 制限対象のポストIDを指定してください。
+	PostId        string `protobuf:"bytes,1,opt,name=post_id,json=postId,proto3" json:"post_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RestrictCommunityPostRequest) Reset() {
+	*x = RestrictCommunityPostRequest{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RestrictCommunityPostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RestrictCommunityPostRequest) ProtoMessage() {}
+
+func (x *RestrictCommunityPostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RestrictCommunityPostRequest.ProtoReflect.Descriptor instead.
+func (*RestrictCommunityPostRequest) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *RestrictCommunityPostRequest) GetPostId() string {
+	if x != nil {
+		return x.PostId
+	}
+	return ""
+}
+
+// コミュニティポスト制限レスポンスです。
+type RestrictCommunityPostResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RestrictCommunityPostResponse) Reset() {
+	*x = RestrictCommunityPostResponse{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RestrictCommunityPostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RestrictCommunityPostResponse) ProtoMessage() {}
+
+func (x *RestrictCommunityPostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RestrictCommunityPostResponse.ProtoReflect.Descriptor instead.
+func (*RestrictCommunityPostResponse) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{19}
+}
+
+// プラグインがインストールされているコミュニティ一覧取得リクエストです。
+type GetCommunitiesUsingApplicationRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ページング用カーソルを指定してください（任意）。
+	Cursor        *string `protobuf:"bytes,1,opt,name=cursor,proto3,oneof" json:"cursor,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCommunitiesUsingApplicationRequest) Reset() {
+	*x = GetCommunitiesUsingApplicationRequest{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCommunitiesUsingApplicationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCommunitiesUsingApplicationRequest) ProtoMessage() {}
+
+func (x *GetCommunitiesUsingApplicationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCommunitiesUsingApplicationRequest.ProtoReflect.Descriptor instead.
+func (*GetCommunitiesUsingApplicationRequest) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *GetCommunitiesUsingApplicationRequest) GetCursor() string {
+	if x != nil && x.Cursor != nil {
+		return *x.Cursor
+	}
+	return ""
+}
+
+// プラグインがインストールされているコミュニティ一覧取得レスポンスです。
+type GetCommunitiesUsingApplicationResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// アプリケーションが導入されているコミュニティ一覧です。
+	CommunitiesUsingApplication []*v1.CommunityUsingApplication `protobuf:"bytes,1,rep,name=communities_using_application,json=communitiesUsingApplication,proto3" json:"communities_using_application,omitempty"`
+	// 各コミュニティのバージョン一覧です。
+	ApplicationVersions []*v1.ApplicationVersion `protobuf:"bytes,2,rep,name=application_versions,json=applicationVersions,proto3" json:"application_versions,omitempty"`
+	// 次ページ取得用のページングカーソルです。
+	NextCursor    *string `protobuf:"bytes,3,opt,name=next_cursor,json=nextCursor,proto3,oneof" json:"next_cursor,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCommunitiesUsingApplicationResponse) Reset() {
+	*x = GetCommunitiesUsingApplicationResponse{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCommunitiesUsingApplicationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCommunitiesUsingApplicationResponse) ProtoMessage() {}
+
+func (x *GetCommunitiesUsingApplicationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCommunitiesUsingApplicationResponse.ProtoReflect.Descriptor instead.
+func (*GetCommunitiesUsingApplicationResponse) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *GetCommunitiesUsingApplicationResponse) GetCommunitiesUsingApplication() []*v1.CommunityUsingApplication {
+	if x != nil {
+		return x.CommunitiesUsingApplication
+	}
+	return nil
+}
+
+func (x *GetCommunitiesUsingApplicationResponse) GetApplicationVersions() []*v1.ApplicationVersion {
+	if x != nil {
+		return x.ApplicationVersions
+	}
+	return nil
+}
+
+func (x *GetCommunitiesUsingApplicationResponse) GetNextCursor() string {
+	if x != nil && x.NextCursor != nil {
+		return *x.NextCursor
+	}
+	return ""
 }
 
 // text または media_id のいずれかは必須です。
@@ -785,7 +1307,7 @@ type SendChatMessageRequest struct {
 
 func (x *SendChatMessageRequest) Reset() {
 	*x = SendChatMessageRequest{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[12]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -797,7 +1319,7 @@ func (x *SendChatMessageRequest) String() string {
 func (*SendChatMessageRequest) ProtoMessage() {}
 
 func (x *SendChatMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[12]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -810,7 +1332,7 @@ func (x *SendChatMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendChatMessageRequest.ProtoReflect.Descriptor instead.
 func (*SendChatMessageRequest) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{12}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *SendChatMessageRequest) GetRoomId() string {
@@ -845,7 +1367,7 @@ type SendChatMessageResponse struct {
 
 func (x *SendChatMessageResponse) Reset() {
 	*x = SendChatMessageResponse{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[13]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -857,7 +1379,7 @@ func (x *SendChatMessageResponse) String() string {
 func (*SendChatMessageResponse) ProtoMessage() {}
 
 func (x *SendChatMessageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[13]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -870,7 +1392,7 @@ func (x *SendChatMessageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendChatMessageResponse.ProtoReflect.Descriptor instead.
 func (*SendChatMessageResponse) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{13}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *SendChatMessageResponse) GetMessage() *v1.ChatMessage {
@@ -886,13 +1408,16 @@ type GetStampsRequest struct {
 	// 取得する公式スタンプの言語を指定してください（任意）。
 	// 未指定の場合、公式スタンプ一覧は空で返されます。
 	OfficialStampLanguage *v11.LanguageCode `protobuf:"varint,1,opt,name=official_stamp_language,json=officialStampLanguage,proto3,enum=social.mixi.application.const.v1.LanguageCode,oneof" json:"official_stamp_language,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	// コミュニティ固有スタンプを取得する場合、コミュニティIDを指定してください。
+	// 指定するコミュニティIDは、アプリケーションが導入されている必要があります。
+	CommunityIds  []string `protobuf:"bytes,2,rep,name=community_ids,json=communityIds,proto3" json:"community_ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetStampsRequest) Reset() {
 	*x = GetStampsRequest{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[14]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -904,7 +1429,7 @@ func (x *GetStampsRequest) String() string {
 func (*GetStampsRequest) ProtoMessage() {}
 
 func (x *GetStampsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[14]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -917,7 +1442,7 @@ func (x *GetStampsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStampsRequest.ProtoReflect.Descriptor instead.
 func (*GetStampsRequest) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{14}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GetStampsRequest) GetOfficialStampLanguage() v11.LanguageCode {
@@ -927,18 +1452,27 @@ func (x *GetStampsRequest) GetOfficialStampLanguage() v11.LanguageCode {
 	return v11.LanguageCode(0)
 }
 
+func (x *GetStampsRequest) GetCommunityIds() []string {
+	if x != nil {
+		return x.CommunityIds
+	}
+	return nil
+}
+
 // スタンプ一覧取得レスポンスです。
 type GetStampsResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// 指定言語の公式スタンプセット一覧です。
 	OfficialStampSets []*v1.OfficialStampSet `protobuf:"bytes,1,rep,name=official_stamp_sets,json=officialStampSets,proto3" json:"official_stamp_sets,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	// コミュニティ固有スタンプセット一覧です。
+	CommunityStampSets []*v1.CommunityStampSet `protobuf:"bytes,2,rep,name=community_stamp_sets,json=communityStampSets,proto3" json:"community_stamp_sets,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *GetStampsResponse) Reset() {
 	*x = GetStampsResponse{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[15]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -950,7 +1484,7 @@ func (x *GetStampsResponse) String() string {
 func (*GetStampsResponse) ProtoMessage() {}
 
 func (x *GetStampsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[15]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -963,7 +1497,7 @@ func (x *GetStampsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStampsResponse.ProtoReflect.Descriptor instead.
 func (*GetStampsResponse) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{15}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GetStampsResponse) GetOfficialStampSets() []*v1.OfficialStampSet {
@@ -973,14 +1507,23 @@ func (x *GetStampsResponse) GetOfficialStampSets() []*v1.OfficialStampSet {
 	return nil
 }
 
+func (x *GetStampsResponse) GetCommunityStampSets() []*v1.CommunityStampSet {
+	if x != nil {
+		return x.CommunityStampSets
+	}
+	return nil
+}
+
 // ポストへのスタンプ付与リクエストです。
 type AddStampToPostRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// スタンプを付与する対象のポストIDを指定してください。指定可能なポストIDは次の通りです。
+	// - アプリケーションが導入されているコミュニティ内のポストID
 	// - アプリケーションにメンションしているポストID
 	PostId string `protobuf:"bytes,1,opt,name=post_id,json=postId,proto3" json:"post_id,omitempty"`
 	// 付与するスタンプIDを指定してください。指定可能なスタンプIDは次の通りです。
 	// - 公式スタンプID
+	// - コミュニティスタンプID（コミュニティポストの場合のみ利用可能）
 	StampId       string `protobuf:"bytes,2,opt,name=stamp_id,json=stampId,proto3" json:"stamp_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -988,7 +1531,7 @@ type AddStampToPostRequest struct {
 
 func (x *AddStampToPostRequest) Reset() {
 	*x = AddStampToPostRequest{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[16]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1000,7 +1543,7 @@ func (x *AddStampToPostRequest) String() string {
 func (*AddStampToPostRequest) ProtoMessage() {}
 
 func (x *AddStampToPostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[16]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1013,7 +1556,7 @@ func (x *AddStampToPostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddStampToPostRequest.ProtoReflect.Descriptor instead.
 func (*AddStampToPostRequest) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{16}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *AddStampToPostRequest) GetPostId() string {
@@ -1041,7 +1584,7 @@ type AddStampToPostResponse struct {
 
 func (x *AddStampToPostResponse) Reset() {
 	*x = AddStampToPostResponse{}
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[17]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1053,7 +1596,7 @@ func (x *AddStampToPostResponse) String() string {
 func (*AddStampToPostResponse) ProtoMessage() {}
 
 func (x *AddStampToPostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[17]
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1066,7 +1609,7 @@ func (x *AddStampToPostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddStampToPostResponse.ProtoReflect.Descriptor instead.
 func (*AddStampToPostResponse) Descriptor() ([]byte, []int) {
-	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{17}
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *AddStampToPostResponse) GetPost() *v1.Post {
@@ -1076,11 +1619,141 @@ func (x *AddStampToPostResponse) GetPost() *v1.Post {
 	return nil
 }
 
+// コミュニティメンバーへのダイレクトメッセージ送信リクエストです。
+// text または media_ids のいずれかは必須です。
+type SendDirectMessageToCommunityMemberRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 受信者ユーザーIDを指定してください。
+	ReceiverId string `protobuf:"bytes,1,opt,name=receiver_id,json=receiverId,proto3" json:"receiver_id,omitempty"`
+	// 受信者が所属するコミュニティIDを指定してください。
+	// 対象コミュニティにはアプリケーションが導入されている必要があります。
+	CommunityId string `protobuf:"bytes,2,opt,name=community_id,json=communityId,proto3" json:"community_id,omitempty"`
+	// 本文テキストを指定してください（任意）。
+	Text *string `protobuf:"bytes,3,opt,name=text,proto3,oneof" json:"text,omitempty"`
+	// 添付するメディアID一覧を指定してください（最大4件）。
+	MediaIds []string `protobuf:"bytes,4,rep,name=media_ids,json=mediaIds,proto3" json:"media_ids,omitempty"`
+	// ポストを引用してDMを送信する場合、ポストIDを指定してください（任意）。
+	PostId        *string `protobuf:"bytes,5,opt,name=post_id,json=postId,proto3,oneof" json:"post_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SendDirectMessageToCommunityMemberRequest) Reset() {
+	*x = SendDirectMessageToCommunityMemberRequest{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SendDirectMessageToCommunityMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendDirectMessageToCommunityMemberRequest) ProtoMessage() {}
+
+func (x *SendDirectMessageToCommunityMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendDirectMessageToCommunityMemberRequest.ProtoReflect.Descriptor instead.
+func (*SendDirectMessageToCommunityMemberRequest) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *SendDirectMessageToCommunityMemberRequest) GetReceiverId() string {
+	if x != nil {
+		return x.ReceiverId
+	}
+	return ""
+}
+
+func (x *SendDirectMessageToCommunityMemberRequest) GetCommunityId() string {
+	if x != nil {
+		return x.CommunityId
+	}
+	return ""
+}
+
+func (x *SendDirectMessageToCommunityMemberRequest) GetText() string {
+	if x != nil && x.Text != nil {
+		return *x.Text
+	}
+	return ""
+}
+
+func (x *SendDirectMessageToCommunityMemberRequest) GetMediaIds() []string {
+	if x != nil {
+		return x.MediaIds
+	}
+	return nil
+}
+
+func (x *SendDirectMessageToCommunityMemberRequest) GetPostId() string {
+	if x != nil && x.PostId != nil {
+		return *x.PostId
+	}
+	return ""
+}
+
+// コミュニティメンバーへのダイレクトメッセージ送信レスポンスです。
+type SendDirectMessageToCommunityMemberResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 送信されたメッセージです。
+	Message       *v1.ChatMessage `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SendDirectMessageToCommunityMemberResponse) Reset() {
+	*x = SendDirectMessageToCommunityMemberResponse{}
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SendDirectMessageToCommunityMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendDirectMessageToCommunityMemberResponse) ProtoMessage() {}
+
+func (x *SendDirectMessageToCommunityMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendDirectMessageToCommunityMemberResponse.ProtoReflect.Descriptor instead.
+func (*SendDirectMessageToCommunityMemberResponse) Descriptor() ([]byte, []int) {
+	return file_social_mixi_application_service_application_api_v1_service_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *SendDirectMessageToCommunityMemberResponse) GetMessage() *v1.ChatMessage {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
 var File_social_mixi_application_service_application_api_v1_service_proto protoreflect.FileDescriptor
 
 const file_social_mixi_application_service_application_api_v1_service_proto_rawDesc = "" +
 	"\n" +
-	"@social/mixi/application/service/application_api/v1/service.proto\x122social.mixi.application.service.application_api.v1\x1a4social/mixi/application/const/v1/language_code.proto\x1a;social/mixi/application/const/v1/post_publishing_type.proto\x1a.social/mixi/application/model/v1/message.proto\x1a+social/mixi/application/model/v1/post.proto\x1a,social/mixi/application/model/v1/stamp.proto\x1a+social/mixi/application/model/v1/user.proto\"3\n" +
+	"@social/mixi/application/service/application_api/v1/service.proto\x122social.mixi.application.service.application_api.v1\x1a4social/mixi/application/const/v1/language_code.proto\x1a;social/mixi/application/const/v1/post_publishing_type.proto\x1a2social/mixi/application/model/v1/application.proto\x1a0social/mixi/application/model/v1/community.proto\x1a.social/mixi/application/model/v1/message.proto\x1a+social/mixi/application/model/v1/post.proto\x1a,social/mixi/application/model/v1/stamp.proto\x1a+social/mixi/application/model/v1/user.proto\"3\n" +
 	"\x0fGetUsersRequest\x12 \n" +
 	"\fuser_id_list\x18\x01 \x03(\tR\n" +
 	"userIdList\"P\n" +
@@ -1090,7 +1763,11 @@ const file_social_mixi_application_service_application_api_v1_service_proto_rawD
 	"\fpost_id_list\x18\x01 \x03(\tR\n" +
 	"postIdList\"P\n" +
 	"\x10GetPostsResponse\x12<\n" +
-	"\x05posts\x18\x01 \x03(\v2&.social.mixi.application.model.v1.PostR\x05posts\"\xcd\x02\n" +
+	"\x05posts\x18\x01 \x03(\v2&.social.mixi.application.model.v1.PostR\x05posts\"C\n" +
+	"\x15GetCommunitiesRequest\x12*\n" +
+	"\x11community_id_list\x18\x01 \x03(\tR\x0fcommunityIdList\"g\n" +
+	"\x16GetCommunitiesResponse\x12M\n" +
+	"\vcommunities\x18\x01 \x03(\v2+.social.mixi.application.model.v1.CommunityR\vcommunities\"\xcd\x02\n" +
 	"\x1eInitiatePostMediaUploadRequest\x12!\n" +
 	"\fcontent_type\x18\x01 \x01(\tR\vcontentType\x12\x1b\n" +
 	"\tdata_size\x18\x02 \x01(\x04R\bdataSize\x12v\n" +
@@ -1117,16 +1794,18 @@ const file_social_mixi_application_service_application_api_v1_service_proto_rawD
 	"\x15STATUS_UPLOAD_PENDING\x10\x01\x12\x15\n" +
 	"\x11STATUS_PROCESSING\x10\x02\x12\x14\n" +
 	"\x10STATUS_COMPLETED\x10\x03\x12\x11\n" +
-	"\rSTATUS_FAILED\x10\x04\"\xa8\x03\n" +
+	"\rSTATUS_FAILED\x10\x04\"\xe1\x03\n" +
 	"\x11CreatePostRequest\x12\x12\n" +
 	"\x04text\x18\x01 \x01(\tR\x04text\x121\n" +
 	"\x13in_reply_to_post_id\x18\x02 \x01(\tH\x00R\x0finReplyToPostId\x88\x01\x01\x12)\n" +
-	"\x0equoted_post_id\x18\x03 \x01(\tH\x01R\fquotedPostId\x88\x01\x01\x12\"\n" +
+	"\x0equoted_post_id\x18\x03 \x01(\tH\x01R\fquotedPostId\x88\x01\x01\x12&\n" +
+	"\fcommunity_id\x18\x04 \x01(\tH\x02R\vcommunityId\x88\x01\x01\x12\"\n" +
 	"\rmedia_id_list\x18\x05 \x03(\tR\vmediaIdList\x12L\n" +
-	"\tpost_mask\x18\x06 \x01(\v2*.social.mixi.application.model.v1.PostMaskH\x02R\bpostMask\x88\x01\x01\x12b\n" +
-	"\x0fpublishing_type\x18\a \x01(\x0e24.social.mixi.application.const.v1.PostPublishingTypeH\x03R\x0epublishingType\x88\x01\x01B\x16\n" +
+	"\tpost_mask\x18\x06 \x01(\v2*.social.mixi.application.model.v1.PostMaskH\x03R\bpostMask\x88\x01\x01\x12b\n" +
+	"\x0fpublishing_type\x18\a \x01(\x0e24.social.mixi.application.const.v1.PostPublishingTypeH\x04R\x0epublishingType\x88\x01\x01B\x16\n" +
 	"\x14_in_reply_to_post_idB\x11\n" +
-	"\x0f_quoted_post_idB\f\n" +
+	"\x0f_quoted_post_idB\x0f\n" +
+	"\r_community_idB\f\n" +
 	"\n" +
 	"_post_maskB\x12\n" +
 	"\x10_publishing_type\"P\n" +
@@ -1135,7 +1814,35 @@ const file_social_mixi_application_service_application_api_v1_service_proto_rawD
 	"\x11DeletePostRequest\x12\x17\n" +
 	"\apost_id\x18\x01 \x01(\tR\x06postId\".\n" +
 	"\x12DeletePostResponse\x12\x18\n" +
-	"\adeleted\x18\x01 \x01(\bR\adeleted\"\x80\x01\n" +
+	"\adeleted\x18\x01 \x01(\bR\adeleted\"\xb2\x01\n" +
+	"\x1bGetCommunityTimelineRequest\x12!\n" +
+	"\fcommunity_id\x18\x01 \x01(\tR\vcommunityId\x12&\n" +
+	"\funtil_cursor\x18\x02 \x01(\tH\x00R\vuntilCursor\x88\x01\x01\x12&\n" +
+	"\fsince_cursor\x18\x03 \x01(\tH\x01R\vsinceCursor\x88\x01\x01B\x0f\n" +
+	"\r_until_cursorB\x0f\n" +
+	"\r_since_cursor\"\\\n" +
+	"\x1cGetCommunityTimelineResponse\x12<\n" +
+	"\x05posts\x18\x01 \x03(\v2&.social.mixi.application.model.v1.PostR\x05posts\"\x8a\x01\n" +
+	"\x1dGetCommunityMemberListRequest\x12!\n" +
+	"\fcommunity_id\x18\x01 \x01(\tR\vcommunityId\x120\n" +
+	"\x11pagination_cursor\x18\x02 \x01(\tH\x00R\x10paginationCursor\x88\x01\x01B\x14\n" +
+	"\x12_pagination_cursor\"\xb8\x01\n" +
+	"\x1eGetCommunityMemberListResponse\x12@\n" +
+	"\amembers\x18\x01 \x03(\v2&.social.mixi.application.model.v1.UserR\amembers\x129\n" +
+	"\x16next_pagination_cursor\x18\x02 \x01(\tH\x00R\x14nextPaginationCursor\x88\x01\x01B\x19\n" +
+	"\x17_next_pagination_cursor\"7\n" +
+	"\x1cRestrictCommunityPostRequest\x12\x17\n" +
+	"\apost_id\x18\x01 \x01(\tR\x06postId\"\x1f\n" +
+	"\x1dRestrictCommunityPostResponse\"O\n" +
+	"%GetCommunitiesUsingApplicationRequest\x12\x1b\n" +
+	"\x06cursor\x18\x01 \x01(\tH\x00R\x06cursor\x88\x01\x01B\t\n" +
+	"\a_cursor\"\xc8\x02\n" +
+	"&GetCommunitiesUsingApplicationResponse\x12\x7f\n" +
+	"\x1dcommunities_using_application\x18\x01 \x03(\v2;.social.mixi.application.model.v1.CommunityUsingApplicationR\x1bcommunitiesUsingApplication\x12g\n" +
+	"\x14application_versions\x18\x02 \x03(\v24.social.mixi.application.model.v1.ApplicationVersionR\x13applicationVersions\x12$\n" +
+	"\vnext_cursor\x18\x03 \x01(\tH\x00R\n" +
+	"nextCursor\x88\x01\x01B\x0e\n" +
+	"\f_next_cursor\"\x80\x01\n" +
 	"\x16SendChatMessageRequest\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\tR\x06roomId\x12\x17\n" +
 	"\x04text\x18\x02 \x01(\tH\x00R\x04text\x88\x01\x01\x12\x1e\n" +
@@ -1143,29 +1850,49 @@ const file_social_mixi_application_service_application_api_v1_service_proto_rawD
 	"\x05_textB\v\n" +
 	"\t_media_id\"b\n" +
 	"\x17SendChatMessageResponse\x12G\n" +
-	"\amessage\x18\x01 \x01(\v2-.social.mixi.application.model.v1.ChatMessageR\amessage\"\x9b\x01\n" +
+	"\amessage\x18\x01 \x01(\v2-.social.mixi.application.model.v1.ChatMessageR\amessage\"\xc0\x01\n" +
 	"\x10GetStampsRequest\x12k\n" +
-	"\x17official_stamp_language\x18\x01 \x01(\x0e2..social.mixi.application.const.v1.LanguageCodeH\x00R\x15officialStampLanguage\x88\x01\x01B\x1a\n" +
-	"\x18_official_stamp_language\"w\n" +
+	"\x17official_stamp_language\x18\x01 \x01(\x0e2..social.mixi.application.const.v1.LanguageCodeH\x00R\x15officialStampLanguage\x88\x01\x01\x12#\n" +
+	"\rcommunity_ids\x18\x02 \x03(\tR\fcommunityIdsB\x1a\n" +
+	"\x18_official_stamp_language\"\xde\x01\n" +
 	"\x11GetStampsResponse\x12b\n" +
-	"\x13official_stamp_sets\x18\x01 \x03(\v22.social.mixi.application.model.v1.OfficialStampSetR\x11officialStampSets\"K\n" +
+	"\x13official_stamp_sets\x18\x01 \x03(\v22.social.mixi.application.model.v1.OfficialStampSetR\x11officialStampSets\x12e\n" +
+	"\x14community_stamp_sets\x18\x02 \x03(\v23.social.mixi.application.model.v1.CommunityStampSetR\x12communityStampSets\"K\n" +
 	"\x15AddStampToPostRequest\x12\x17\n" +
 	"\apost_id\x18\x01 \x01(\tR\x06postId\x12\x19\n" +
 	"\bstamp_id\x18\x02 \x01(\tR\astampId\"T\n" +
 	"\x16AddStampToPostResponse\x12:\n" +
-	"\x04post\x18\x01 \x01(\v2&.social.mixi.application.model.v1.PostR\x04post2\xed\v\n" +
+	"\x04post\x18\x01 \x01(\v2&.social.mixi.application.model.v1.PostR\x04post\"\xd8\x01\n" +
+	")SendDirectMessageToCommunityMemberRequest\x12\x1f\n" +
+	"\vreceiver_id\x18\x01 \x01(\tR\n" +
+	"receiverId\x12!\n" +
+	"\fcommunity_id\x18\x02 \x01(\tR\vcommunityId\x12\x17\n" +
+	"\x04text\x18\x03 \x01(\tH\x00R\x04text\x88\x01\x01\x12\x1b\n" +
+	"\tmedia_ids\x18\x04 \x03(\tR\bmediaIds\x12\x1c\n" +
+	"\apost_id\x18\x05 \x01(\tH\x01R\x06postId\x88\x01\x01B\a\n" +
+	"\x05_textB\n" +
+	"\n" +
+	"\b_post_id\"u\n" +
+	"*SendDirectMessageToCommunityMemberResponse\x12G\n" +
+	"\amessage\x18\x01 \x01(\v2-.social.mixi.application.model.v1.ChatMessageR\amessage2\x94\x15\n" +
 	"\x12ApplicationService\x12\x95\x01\n" +
 	"\bGetUsers\x12C.social.mixi.application.service.application_api.v1.GetUsersRequest\x1aD.social.mixi.application.service.application_api.v1.GetUsersResponse\x12\x95\x01\n" +
-	"\bGetPosts\x12C.social.mixi.application.service.application_api.v1.GetPostsRequest\x1aD.social.mixi.application.service.application_api.v1.GetPostsResponse\x12\x9b\x01\n" +
+	"\bGetPosts\x12C.social.mixi.application.service.application_api.v1.GetPostsRequest\x1aD.social.mixi.application.service.application_api.v1.GetPostsResponse\x12\xa7\x01\n" +
+	"\x0eGetCommunities\x12I.social.mixi.application.service.application_api.v1.GetCommunitiesRequest\x1aJ.social.mixi.application.service.application_api.v1.GetCommunitiesResponse\x12\x9b\x01\n" +
 	"\n" +
 	"CreatePost\x12E.social.mixi.application.service.application_api.v1.CreatePostRequest\x1aF.social.mixi.application.service.application_api.v1.CreatePostResponse\x12\x9b\x01\n" +
 	"\n" +
 	"DeletePost\x12E.social.mixi.application.service.application_api.v1.DeletePostRequest\x1aF.social.mixi.application.service.application_api.v1.DeletePostResponse\x12\xc2\x01\n" +
 	"\x17InitiatePostMediaUpload\x12R.social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest\x1aS.social.mixi.application.service.application_api.v1.InitiatePostMediaUploadResponse\x12\xb3\x01\n" +
-	"\x12GetPostMediaStatus\x12M.social.mixi.application.service.application_api.v1.GetPostMediaStatusRequest\x1aN.social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse\x12\xaa\x01\n" +
+	"\x12GetPostMediaStatus\x12M.social.mixi.application.service.application_api.v1.GetPostMediaStatusRequest\x1aN.social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse\x12\xb9\x01\n" +
+	"\x14GetCommunityTimeline\x12O.social.mixi.application.service.application_api.v1.GetCommunityTimelineRequest\x1aP.social.mixi.application.service.application_api.v1.GetCommunityTimelineResponse\x12\xbf\x01\n" +
+	"\x16GetCommunityMemberList\x12Q.social.mixi.application.service.application_api.v1.GetCommunityMemberListRequest\x1aR.social.mixi.application.service.application_api.v1.GetCommunityMemberListResponse\x12\xbc\x01\n" +
+	"\x15RestrictCommunityPost\x12P.social.mixi.application.service.application_api.v1.RestrictCommunityPostRequest\x1aQ.social.mixi.application.service.application_api.v1.RestrictCommunityPostResponse\x12\xd7\x01\n" +
+	"\x1eGetCommunitiesUsingApplication\x12Y.social.mixi.application.service.application_api.v1.GetCommunitiesUsingApplicationRequest\x1aZ.social.mixi.application.service.application_api.v1.GetCommunitiesUsingApplicationResponse\x12\xaa\x01\n" +
 	"\x0fSendChatMessage\x12J.social.mixi.application.service.application_api.v1.SendChatMessageRequest\x1aK.social.mixi.application.service.application_api.v1.SendChatMessageResponse\x12\x98\x01\n" +
 	"\tGetStamps\x12D.social.mixi.application.service.application_api.v1.GetStampsRequest\x1aE.social.mixi.application.service.application_api.v1.GetStampsResponse\x12\xa7\x01\n" +
-	"\x0eAddStampToPost\x12I.social.mixi.application.service.application_api.v1.AddStampToPostRequest\x1aJ.social.mixi.application.service.application_api.v1.AddStampToPostResponseB\xac\x03\n" +
+	"\x0eAddStampToPost\x12I.social.mixi.application.service.application_api.v1.AddStampToPostRequest\x1aJ.social.mixi.application.service.application_api.v1.AddStampToPostResponse\x12\xe3\x01\n" +
+	"\"SendDirectMessageToCommunityMember\x12].social.mixi.application.service.application_api.v1.SendDirectMessageToCommunityMemberRequest\x1a^.social.mixi.application.service.application_api.v1.SendDirectMessageToCommunityMemberResponseB\xac\x03\n" +
 	"6com.social.mixi.application.service.application_api.v1B\fServiceProtoP\x01Zygithub.com/mixigroup/mixi2-application-sdk-go/gen/go/social/mixi/application/service/application_api/v1;application_apiv1\xa2\x02\x05SMASA\xaa\x021Social.Mixi.Application.Service.ApplicationApi.V1\xca\x021Social\\Mixi\\Application\\Service\\ApplicationApi\\V1\xe2\x02=Social\\Mixi\\Application\\Service\\ApplicationApi\\V1\\GPBMetadata\xea\x026Social::Mixi::Application::Service::ApplicationApi::V1b\x06proto3"
 
 var (
@@ -1181,71 +1908,106 @@ func file_social_mixi_application_service_application_api_v1_service_proto_rawDe
 }
 
 var file_social_mixi_application_service_application_api_v1_service_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_social_mixi_application_service_application_api_v1_service_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_social_mixi_application_service_application_api_v1_service_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_social_mixi_application_service_application_api_v1_service_proto_goTypes = []any{
-	(InitiatePostMediaUploadRequest_Type)(0), // 0: social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest.Type
-	(GetPostMediaStatusResponse_Status)(0),   // 1: social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse.Status
-	(*GetUsersRequest)(nil),                  // 2: social.mixi.application.service.application_api.v1.GetUsersRequest
-	(*GetUsersResponse)(nil),                 // 3: social.mixi.application.service.application_api.v1.GetUsersResponse
-	(*GetPostsRequest)(nil),                  // 4: social.mixi.application.service.application_api.v1.GetPostsRequest
-	(*GetPostsResponse)(nil),                 // 5: social.mixi.application.service.application_api.v1.GetPostsResponse
-	(*InitiatePostMediaUploadRequest)(nil),   // 6: social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest
-	(*InitiatePostMediaUploadResponse)(nil),  // 7: social.mixi.application.service.application_api.v1.InitiatePostMediaUploadResponse
-	(*GetPostMediaStatusRequest)(nil),        // 8: social.mixi.application.service.application_api.v1.GetPostMediaStatusRequest
-	(*GetPostMediaStatusResponse)(nil),       // 9: social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse
-	(*CreatePostRequest)(nil),                // 10: social.mixi.application.service.application_api.v1.CreatePostRequest
-	(*CreatePostResponse)(nil),               // 11: social.mixi.application.service.application_api.v1.CreatePostResponse
-	(*DeletePostRequest)(nil),                // 12: social.mixi.application.service.application_api.v1.DeletePostRequest
-	(*DeletePostResponse)(nil),               // 13: social.mixi.application.service.application_api.v1.DeletePostResponse
-	(*SendChatMessageRequest)(nil),           // 14: social.mixi.application.service.application_api.v1.SendChatMessageRequest
-	(*SendChatMessageResponse)(nil),          // 15: social.mixi.application.service.application_api.v1.SendChatMessageResponse
-	(*GetStampsRequest)(nil),                 // 16: social.mixi.application.service.application_api.v1.GetStampsRequest
-	(*GetStampsResponse)(nil),                // 17: social.mixi.application.service.application_api.v1.GetStampsResponse
-	(*AddStampToPostRequest)(nil),            // 18: social.mixi.application.service.application_api.v1.AddStampToPostRequest
-	(*AddStampToPostResponse)(nil),           // 19: social.mixi.application.service.application_api.v1.AddStampToPostResponse
-	(*v1.User)(nil),                          // 20: social.mixi.application.model.v1.User
-	(*v1.Post)(nil),                          // 21: social.mixi.application.model.v1.Post
-	(*v1.PostMask)(nil),                      // 22: social.mixi.application.model.v1.PostMask
-	(v11.PostPublishingType)(0),              // 23: social.mixi.application.const.v1.PostPublishingType
-	(*v1.ChatMessage)(nil),                   // 24: social.mixi.application.model.v1.ChatMessage
-	(v11.LanguageCode)(0),                    // 25: social.mixi.application.const.v1.LanguageCode
-	(*v1.OfficialStampSet)(nil),              // 26: social.mixi.application.model.v1.OfficialStampSet
+	(InitiatePostMediaUploadRequest_Type)(0),           // 0: social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest.Type
+	(GetPostMediaStatusResponse_Status)(0),             // 1: social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse.Status
+	(*GetUsersRequest)(nil),                            // 2: social.mixi.application.service.application_api.v1.GetUsersRequest
+	(*GetUsersResponse)(nil),                           // 3: social.mixi.application.service.application_api.v1.GetUsersResponse
+	(*GetPostsRequest)(nil),                            // 4: social.mixi.application.service.application_api.v1.GetPostsRequest
+	(*GetPostsResponse)(nil),                           // 5: social.mixi.application.service.application_api.v1.GetPostsResponse
+	(*GetCommunitiesRequest)(nil),                      // 6: social.mixi.application.service.application_api.v1.GetCommunitiesRequest
+	(*GetCommunitiesResponse)(nil),                     // 7: social.mixi.application.service.application_api.v1.GetCommunitiesResponse
+	(*InitiatePostMediaUploadRequest)(nil),             // 8: social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest
+	(*InitiatePostMediaUploadResponse)(nil),            // 9: social.mixi.application.service.application_api.v1.InitiatePostMediaUploadResponse
+	(*GetPostMediaStatusRequest)(nil),                  // 10: social.mixi.application.service.application_api.v1.GetPostMediaStatusRequest
+	(*GetPostMediaStatusResponse)(nil),                 // 11: social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse
+	(*CreatePostRequest)(nil),                          // 12: social.mixi.application.service.application_api.v1.CreatePostRequest
+	(*CreatePostResponse)(nil),                         // 13: social.mixi.application.service.application_api.v1.CreatePostResponse
+	(*DeletePostRequest)(nil),                          // 14: social.mixi.application.service.application_api.v1.DeletePostRequest
+	(*DeletePostResponse)(nil),                         // 15: social.mixi.application.service.application_api.v1.DeletePostResponse
+	(*GetCommunityTimelineRequest)(nil),                // 16: social.mixi.application.service.application_api.v1.GetCommunityTimelineRequest
+	(*GetCommunityTimelineResponse)(nil),               // 17: social.mixi.application.service.application_api.v1.GetCommunityTimelineResponse
+	(*GetCommunityMemberListRequest)(nil),              // 18: social.mixi.application.service.application_api.v1.GetCommunityMemberListRequest
+	(*GetCommunityMemberListResponse)(nil),             // 19: social.mixi.application.service.application_api.v1.GetCommunityMemberListResponse
+	(*RestrictCommunityPostRequest)(nil),               // 20: social.mixi.application.service.application_api.v1.RestrictCommunityPostRequest
+	(*RestrictCommunityPostResponse)(nil),              // 21: social.mixi.application.service.application_api.v1.RestrictCommunityPostResponse
+	(*GetCommunitiesUsingApplicationRequest)(nil),      // 22: social.mixi.application.service.application_api.v1.GetCommunitiesUsingApplicationRequest
+	(*GetCommunitiesUsingApplicationResponse)(nil),     // 23: social.mixi.application.service.application_api.v1.GetCommunitiesUsingApplicationResponse
+	(*SendChatMessageRequest)(nil),                     // 24: social.mixi.application.service.application_api.v1.SendChatMessageRequest
+	(*SendChatMessageResponse)(nil),                    // 25: social.mixi.application.service.application_api.v1.SendChatMessageResponse
+	(*GetStampsRequest)(nil),                           // 26: social.mixi.application.service.application_api.v1.GetStampsRequest
+	(*GetStampsResponse)(nil),                          // 27: social.mixi.application.service.application_api.v1.GetStampsResponse
+	(*AddStampToPostRequest)(nil),                      // 28: social.mixi.application.service.application_api.v1.AddStampToPostRequest
+	(*AddStampToPostResponse)(nil),                     // 29: social.mixi.application.service.application_api.v1.AddStampToPostResponse
+	(*SendDirectMessageToCommunityMemberRequest)(nil),  // 30: social.mixi.application.service.application_api.v1.SendDirectMessageToCommunityMemberRequest
+	(*SendDirectMessageToCommunityMemberResponse)(nil), // 31: social.mixi.application.service.application_api.v1.SendDirectMessageToCommunityMemberResponse
+	(*v1.User)(nil),                                    // 32: social.mixi.application.model.v1.User
+	(*v1.Post)(nil),                                    // 33: social.mixi.application.model.v1.Post
+	(*v1.Community)(nil),                               // 34: social.mixi.application.model.v1.Community
+	(*v1.PostMask)(nil),                                // 35: social.mixi.application.model.v1.PostMask
+	(v11.PostPublishingType)(0),                        // 36: social.mixi.application.const.v1.PostPublishingType
+	(*v1.CommunityUsingApplication)(nil),               // 37: social.mixi.application.model.v1.CommunityUsingApplication
+	(*v1.ApplicationVersion)(nil),                      // 38: social.mixi.application.model.v1.ApplicationVersion
+	(*v1.ChatMessage)(nil),                             // 39: social.mixi.application.model.v1.ChatMessage
+	(v11.LanguageCode)(0),                              // 40: social.mixi.application.const.v1.LanguageCode
+	(*v1.OfficialStampSet)(nil),                        // 41: social.mixi.application.model.v1.OfficialStampSet
+	(*v1.CommunityStampSet)(nil),                       // 42: social.mixi.application.model.v1.CommunityStampSet
 }
 var file_social_mixi_application_service_application_api_v1_service_proto_depIdxs = []int32{
-	20, // 0: social.mixi.application.service.application_api.v1.GetUsersResponse.users:type_name -> social.mixi.application.model.v1.User
-	21, // 1: social.mixi.application.service.application_api.v1.GetPostsResponse.posts:type_name -> social.mixi.application.model.v1.Post
-	0,  // 2: social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest.media_type:type_name -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest.Type
-	1,  // 3: social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse.status:type_name -> social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse.Status
-	22, // 4: social.mixi.application.service.application_api.v1.CreatePostRequest.post_mask:type_name -> social.mixi.application.model.v1.PostMask
-	23, // 5: social.mixi.application.service.application_api.v1.CreatePostRequest.publishing_type:type_name -> social.mixi.application.const.v1.PostPublishingType
-	21, // 6: social.mixi.application.service.application_api.v1.CreatePostResponse.post:type_name -> social.mixi.application.model.v1.Post
-	24, // 7: social.mixi.application.service.application_api.v1.SendChatMessageResponse.message:type_name -> social.mixi.application.model.v1.ChatMessage
-	25, // 8: social.mixi.application.service.application_api.v1.GetStampsRequest.official_stamp_language:type_name -> social.mixi.application.const.v1.LanguageCode
-	26, // 9: social.mixi.application.service.application_api.v1.GetStampsResponse.official_stamp_sets:type_name -> social.mixi.application.model.v1.OfficialStampSet
-	21, // 10: social.mixi.application.service.application_api.v1.AddStampToPostResponse.post:type_name -> social.mixi.application.model.v1.Post
-	2,  // 11: social.mixi.application.service.application_api.v1.ApplicationService.GetUsers:input_type -> social.mixi.application.service.application_api.v1.GetUsersRequest
-	4,  // 12: social.mixi.application.service.application_api.v1.ApplicationService.GetPosts:input_type -> social.mixi.application.service.application_api.v1.GetPostsRequest
-	10, // 13: social.mixi.application.service.application_api.v1.ApplicationService.CreatePost:input_type -> social.mixi.application.service.application_api.v1.CreatePostRequest
-	12, // 14: social.mixi.application.service.application_api.v1.ApplicationService.DeletePost:input_type -> social.mixi.application.service.application_api.v1.DeletePostRequest
-	6,  // 15: social.mixi.application.service.application_api.v1.ApplicationService.InitiatePostMediaUpload:input_type -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest
-	8,  // 16: social.mixi.application.service.application_api.v1.ApplicationService.GetPostMediaStatus:input_type -> social.mixi.application.service.application_api.v1.GetPostMediaStatusRequest
-	14, // 17: social.mixi.application.service.application_api.v1.ApplicationService.SendChatMessage:input_type -> social.mixi.application.service.application_api.v1.SendChatMessageRequest
-	16, // 18: social.mixi.application.service.application_api.v1.ApplicationService.GetStamps:input_type -> social.mixi.application.service.application_api.v1.GetStampsRequest
-	18, // 19: social.mixi.application.service.application_api.v1.ApplicationService.AddStampToPost:input_type -> social.mixi.application.service.application_api.v1.AddStampToPostRequest
-	3,  // 20: social.mixi.application.service.application_api.v1.ApplicationService.GetUsers:output_type -> social.mixi.application.service.application_api.v1.GetUsersResponse
-	5,  // 21: social.mixi.application.service.application_api.v1.ApplicationService.GetPosts:output_type -> social.mixi.application.service.application_api.v1.GetPostsResponse
-	11, // 22: social.mixi.application.service.application_api.v1.ApplicationService.CreatePost:output_type -> social.mixi.application.service.application_api.v1.CreatePostResponse
-	13, // 23: social.mixi.application.service.application_api.v1.ApplicationService.DeletePost:output_type -> social.mixi.application.service.application_api.v1.DeletePostResponse
-	7,  // 24: social.mixi.application.service.application_api.v1.ApplicationService.InitiatePostMediaUpload:output_type -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadResponse
-	9,  // 25: social.mixi.application.service.application_api.v1.ApplicationService.GetPostMediaStatus:output_type -> social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse
-	15, // 26: social.mixi.application.service.application_api.v1.ApplicationService.SendChatMessage:output_type -> social.mixi.application.service.application_api.v1.SendChatMessageResponse
-	17, // 27: social.mixi.application.service.application_api.v1.ApplicationService.GetStamps:output_type -> social.mixi.application.service.application_api.v1.GetStampsResponse
-	19, // 28: social.mixi.application.service.application_api.v1.ApplicationService.AddStampToPost:output_type -> social.mixi.application.service.application_api.v1.AddStampToPostResponse
-	20, // [20:29] is the sub-list for method output_type
-	11, // [11:20] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	32, // 0: social.mixi.application.service.application_api.v1.GetUsersResponse.users:type_name -> social.mixi.application.model.v1.User
+	33, // 1: social.mixi.application.service.application_api.v1.GetPostsResponse.posts:type_name -> social.mixi.application.model.v1.Post
+	34, // 2: social.mixi.application.service.application_api.v1.GetCommunitiesResponse.communities:type_name -> social.mixi.application.model.v1.Community
+	0,  // 3: social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest.media_type:type_name -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest.Type
+	1,  // 4: social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse.status:type_name -> social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse.Status
+	35, // 5: social.mixi.application.service.application_api.v1.CreatePostRequest.post_mask:type_name -> social.mixi.application.model.v1.PostMask
+	36, // 6: social.mixi.application.service.application_api.v1.CreatePostRequest.publishing_type:type_name -> social.mixi.application.const.v1.PostPublishingType
+	33, // 7: social.mixi.application.service.application_api.v1.CreatePostResponse.post:type_name -> social.mixi.application.model.v1.Post
+	33, // 8: social.mixi.application.service.application_api.v1.GetCommunityTimelineResponse.posts:type_name -> social.mixi.application.model.v1.Post
+	32, // 9: social.mixi.application.service.application_api.v1.GetCommunityMemberListResponse.members:type_name -> social.mixi.application.model.v1.User
+	37, // 10: social.mixi.application.service.application_api.v1.GetCommunitiesUsingApplicationResponse.communities_using_application:type_name -> social.mixi.application.model.v1.CommunityUsingApplication
+	38, // 11: social.mixi.application.service.application_api.v1.GetCommunitiesUsingApplicationResponse.application_versions:type_name -> social.mixi.application.model.v1.ApplicationVersion
+	39, // 12: social.mixi.application.service.application_api.v1.SendChatMessageResponse.message:type_name -> social.mixi.application.model.v1.ChatMessage
+	40, // 13: social.mixi.application.service.application_api.v1.GetStampsRequest.official_stamp_language:type_name -> social.mixi.application.const.v1.LanguageCode
+	41, // 14: social.mixi.application.service.application_api.v1.GetStampsResponse.official_stamp_sets:type_name -> social.mixi.application.model.v1.OfficialStampSet
+	42, // 15: social.mixi.application.service.application_api.v1.GetStampsResponse.community_stamp_sets:type_name -> social.mixi.application.model.v1.CommunityStampSet
+	33, // 16: social.mixi.application.service.application_api.v1.AddStampToPostResponse.post:type_name -> social.mixi.application.model.v1.Post
+	39, // 17: social.mixi.application.service.application_api.v1.SendDirectMessageToCommunityMemberResponse.message:type_name -> social.mixi.application.model.v1.ChatMessage
+	2,  // 18: social.mixi.application.service.application_api.v1.ApplicationService.GetUsers:input_type -> social.mixi.application.service.application_api.v1.GetUsersRequest
+	4,  // 19: social.mixi.application.service.application_api.v1.ApplicationService.GetPosts:input_type -> social.mixi.application.service.application_api.v1.GetPostsRequest
+	6,  // 20: social.mixi.application.service.application_api.v1.ApplicationService.GetCommunities:input_type -> social.mixi.application.service.application_api.v1.GetCommunitiesRequest
+	12, // 21: social.mixi.application.service.application_api.v1.ApplicationService.CreatePost:input_type -> social.mixi.application.service.application_api.v1.CreatePostRequest
+	14, // 22: social.mixi.application.service.application_api.v1.ApplicationService.DeletePost:input_type -> social.mixi.application.service.application_api.v1.DeletePostRequest
+	8,  // 23: social.mixi.application.service.application_api.v1.ApplicationService.InitiatePostMediaUpload:input_type -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadRequest
+	10, // 24: social.mixi.application.service.application_api.v1.ApplicationService.GetPostMediaStatus:input_type -> social.mixi.application.service.application_api.v1.GetPostMediaStatusRequest
+	16, // 25: social.mixi.application.service.application_api.v1.ApplicationService.GetCommunityTimeline:input_type -> social.mixi.application.service.application_api.v1.GetCommunityTimelineRequest
+	18, // 26: social.mixi.application.service.application_api.v1.ApplicationService.GetCommunityMemberList:input_type -> social.mixi.application.service.application_api.v1.GetCommunityMemberListRequest
+	20, // 27: social.mixi.application.service.application_api.v1.ApplicationService.RestrictCommunityPost:input_type -> social.mixi.application.service.application_api.v1.RestrictCommunityPostRequest
+	22, // 28: social.mixi.application.service.application_api.v1.ApplicationService.GetCommunitiesUsingApplication:input_type -> social.mixi.application.service.application_api.v1.GetCommunitiesUsingApplicationRequest
+	24, // 29: social.mixi.application.service.application_api.v1.ApplicationService.SendChatMessage:input_type -> social.mixi.application.service.application_api.v1.SendChatMessageRequest
+	26, // 30: social.mixi.application.service.application_api.v1.ApplicationService.GetStamps:input_type -> social.mixi.application.service.application_api.v1.GetStampsRequest
+	28, // 31: social.mixi.application.service.application_api.v1.ApplicationService.AddStampToPost:input_type -> social.mixi.application.service.application_api.v1.AddStampToPostRequest
+	30, // 32: social.mixi.application.service.application_api.v1.ApplicationService.SendDirectMessageToCommunityMember:input_type -> social.mixi.application.service.application_api.v1.SendDirectMessageToCommunityMemberRequest
+	3,  // 33: social.mixi.application.service.application_api.v1.ApplicationService.GetUsers:output_type -> social.mixi.application.service.application_api.v1.GetUsersResponse
+	5,  // 34: social.mixi.application.service.application_api.v1.ApplicationService.GetPosts:output_type -> social.mixi.application.service.application_api.v1.GetPostsResponse
+	7,  // 35: social.mixi.application.service.application_api.v1.ApplicationService.GetCommunities:output_type -> social.mixi.application.service.application_api.v1.GetCommunitiesResponse
+	13, // 36: social.mixi.application.service.application_api.v1.ApplicationService.CreatePost:output_type -> social.mixi.application.service.application_api.v1.CreatePostResponse
+	15, // 37: social.mixi.application.service.application_api.v1.ApplicationService.DeletePost:output_type -> social.mixi.application.service.application_api.v1.DeletePostResponse
+	9,  // 38: social.mixi.application.service.application_api.v1.ApplicationService.InitiatePostMediaUpload:output_type -> social.mixi.application.service.application_api.v1.InitiatePostMediaUploadResponse
+	11, // 39: social.mixi.application.service.application_api.v1.ApplicationService.GetPostMediaStatus:output_type -> social.mixi.application.service.application_api.v1.GetPostMediaStatusResponse
+	17, // 40: social.mixi.application.service.application_api.v1.ApplicationService.GetCommunityTimeline:output_type -> social.mixi.application.service.application_api.v1.GetCommunityTimelineResponse
+	19, // 41: social.mixi.application.service.application_api.v1.ApplicationService.GetCommunityMemberList:output_type -> social.mixi.application.service.application_api.v1.GetCommunityMemberListResponse
+	21, // 42: social.mixi.application.service.application_api.v1.ApplicationService.RestrictCommunityPost:output_type -> social.mixi.application.service.application_api.v1.RestrictCommunityPostResponse
+	23, // 43: social.mixi.application.service.application_api.v1.ApplicationService.GetCommunitiesUsingApplication:output_type -> social.mixi.application.service.application_api.v1.GetCommunitiesUsingApplicationResponse
+	25, // 44: social.mixi.application.service.application_api.v1.ApplicationService.SendChatMessage:output_type -> social.mixi.application.service.application_api.v1.SendChatMessageResponse
+	27, // 45: social.mixi.application.service.application_api.v1.ApplicationService.GetStamps:output_type -> social.mixi.application.service.application_api.v1.GetStampsResponse
+	29, // 46: social.mixi.application.service.application_api.v1.ApplicationService.AddStampToPost:output_type -> social.mixi.application.service.application_api.v1.AddStampToPostResponse
+	31, // 47: social.mixi.application.service.application_api.v1.ApplicationService.SendDirectMessageToCommunityMember:output_type -> social.mixi.application.service.application_api.v1.SendDirectMessageToCommunityMemberResponse
+	33, // [33:48] is the sub-list for method output_type
+	18, // [18:33] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_social_mixi_application_service_application_api_v1_service_proto_init() }
@@ -1253,17 +2015,23 @@ func file_social_mixi_application_service_application_api_v1_service_proto_init(
 	if File_social_mixi_application_service_application_api_v1_service_proto != nil {
 		return
 	}
-	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[4].OneofWrappers = []any{}
-	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[8].OneofWrappers = []any{}
-	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[12].OneofWrappers = []any{}
+	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[6].OneofWrappers = []any{}
+	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[10].OneofWrappers = []any{}
 	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[14].OneofWrappers = []any{}
+	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[16].OneofWrappers = []any{}
+	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[17].OneofWrappers = []any{}
+	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[20].OneofWrappers = []any{}
+	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[21].OneofWrappers = []any{}
+	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[22].OneofWrappers = []any{}
+	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[24].OneofWrappers = []any{}
+	file_social_mixi_application_service_application_api_v1_service_proto_msgTypes[28].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_social_mixi_application_service_application_api_v1_service_proto_rawDesc), len(file_social_mixi_application_service_application_api_v1_service_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   18,
+			NumMessages:   30,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

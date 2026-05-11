@@ -35,27 +35,47 @@ const (
 	EventReason_EVENT_REASON_POST_MENTIONED EventReason = 3
 	// ポストが引用された
 	EventReason_EVENT_REASON_POST_QUOTED EventReason = 4
+	// コミュニティに新しいポストが投稿された
+	EventReason_EVENT_REASON_POST_COMMUNITY EventReason = 5
+	// コミュニティにメンバーが参加した
+	EventReason_EVENT_REASON_COMMUNITY_MEMBER_JOINED EventReason = 6
+	// コミュニティにメンバーが退出した
+	EventReason_EVENT_REASON_COMMUNITY_MEMBER_LEFT EventReason = 7
 	// チャット/ダイレクトメッセージを受信した
 	EventReason_EVENT_REASON_DIRECT_MESSAGE_RECEIVED EventReason = 8
+	// コミュニティにプラグインが導入された
+	EventReason_EVENT_REASON_COMMUNITY_PLUGIN_INSTALLED EventReason = 9
+	// コミュニティからプラグインが削除された
+	EventReason_EVENT_REASON_COMMUNITY_PLUGIN_UNINSTALLED EventReason = 10
 )
 
 // Enum value maps for EventReason.
 var (
 	EventReason_name = map[int32]string{
-		0: "EVENT_REASON_UNSPECIFIED",
-		1: "EVENT_REASON_PING",
-		2: "EVENT_REASON_POST_REPLY",
-		3: "EVENT_REASON_POST_MENTIONED",
-		4: "EVENT_REASON_POST_QUOTED",
-		8: "EVENT_REASON_DIRECT_MESSAGE_RECEIVED",
+		0:  "EVENT_REASON_UNSPECIFIED",
+		1:  "EVENT_REASON_PING",
+		2:  "EVENT_REASON_POST_REPLY",
+		3:  "EVENT_REASON_POST_MENTIONED",
+		4:  "EVENT_REASON_POST_QUOTED",
+		5:  "EVENT_REASON_POST_COMMUNITY",
+		6:  "EVENT_REASON_COMMUNITY_MEMBER_JOINED",
+		7:  "EVENT_REASON_COMMUNITY_MEMBER_LEFT",
+		8:  "EVENT_REASON_DIRECT_MESSAGE_RECEIVED",
+		9:  "EVENT_REASON_COMMUNITY_PLUGIN_INSTALLED",
+		10: "EVENT_REASON_COMMUNITY_PLUGIN_UNINSTALLED",
 	}
 	EventReason_value = map[string]int32{
-		"EVENT_REASON_UNSPECIFIED":             0,
-		"EVENT_REASON_PING":                    1,
-		"EVENT_REASON_POST_REPLY":              2,
-		"EVENT_REASON_POST_MENTIONED":          3,
-		"EVENT_REASON_POST_QUOTED":             4,
-		"EVENT_REASON_DIRECT_MESSAGE_RECEIVED": 8,
+		"EVENT_REASON_UNSPECIFIED":                  0,
+		"EVENT_REASON_PING":                         1,
+		"EVENT_REASON_POST_REPLY":                   2,
+		"EVENT_REASON_POST_MENTIONED":               3,
+		"EVENT_REASON_POST_QUOTED":                  4,
+		"EVENT_REASON_POST_COMMUNITY":               5,
+		"EVENT_REASON_COMMUNITY_MEMBER_JOINED":      6,
+		"EVENT_REASON_COMMUNITY_MEMBER_LEFT":        7,
+		"EVENT_REASON_DIRECT_MESSAGE_RECEIVED":      8,
+		"EVENT_REASON_COMMUNITY_PLUGIN_INSTALLED":   9,
+		"EVENT_REASON_COMMUNITY_PLUGIN_UNINSTALLED": 10,
 	}
 )
 
@@ -96,8 +116,12 @@ const (
 	EventType_EVENT_TYPE_PING EventType = 1
 	// ポスト作成
 	EventType_EVENT_TYPE_POST_CREATED EventType = 2
+	// コミュニティメンバー変更（参加/退出）
+	EventType_EVENT_TYPE_COMMUNITY_MEMBER_CHANGED EventType = 3
 	// メッセージ受信（チャット/ダイレクトメッセージ）
 	EventType_EVENT_TYPE_CHAT_MESSAGE_RECEIVED EventType = 4
+	// コミュニティプラグイン管理（導入/削除）
+	EventType_EVENT_TYPE_COMMUNITY_PLUGIN_MANAGED EventType = 5
 )
 
 // Enum value maps for EventType.
@@ -106,13 +130,17 @@ var (
 		0: "EVENT_TYPE_UNSPECIFIED",
 		1: "EVENT_TYPE_PING",
 		2: "EVENT_TYPE_POST_CREATED",
+		3: "EVENT_TYPE_COMMUNITY_MEMBER_CHANGED",
 		4: "EVENT_TYPE_CHAT_MESSAGE_RECEIVED",
+		5: "EVENT_TYPE_COMMUNITY_PLUGIN_MANAGED",
 	}
 	EventType_value = map[string]int32{
-		"EVENT_TYPE_UNSPECIFIED":           0,
-		"EVENT_TYPE_PING":                  1,
-		"EVENT_TYPE_POST_CREATED":          2,
-		"EVENT_TYPE_CHAT_MESSAGE_RECEIVED": 4,
+		"EVENT_TYPE_UNSPECIFIED":              0,
+		"EVENT_TYPE_PING":                     1,
+		"EVENT_TYPE_POST_CREATED":             2,
+		"EVENT_TYPE_COMMUNITY_MEMBER_CHANGED": 3,
+		"EVENT_TYPE_CHAT_MESSAGE_RECEIVED":    4,
+		"EVENT_TYPE_COMMUNITY_PLUGIN_MANAGED": 5,
 	}
 )
 
@@ -147,19 +175,27 @@ var File_social_mixi_application_const_v1_event_type_proto protoreflect.FileDesc
 
 const file_social_mixi_application_const_v1_event_type_proto_rawDesc = "" +
 	"\n" +
-	"1social/mixi/application/const/v1/event_type.proto\x12 social.mixi.application.const.v1*\xc8\x01\n" +
+	"1social/mixi/application/const/v1/event_type.proto\x12 social.mixi.application.const.v1*\x97\x03\n" +
 	"\vEventReason\x12\x1c\n" +
 	"\x18EVENT_REASON_UNSPECIFIED\x10\x00\x12\x15\n" +
 	"\x11EVENT_REASON_PING\x10\x01\x12\x1b\n" +
 	"\x17EVENT_REASON_POST_REPLY\x10\x02\x12\x1f\n" +
 	"\x1bEVENT_REASON_POST_MENTIONED\x10\x03\x12\x1c\n" +
-	"\x18EVENT_REASON_POST_QUOTED\x10\x04\x12(\n" +
-	"$EVENT_REASON_DIRECT_MESSAGE_RECEIVED\x10\b*\x7f\n" +
+	"\x18EVENT_REASON_POST_QUOTED\x10\x04\x12\x1f\n" +
+	"\x1bEVENT_REASON_POST_COMMUNITY\x10\x05\x12(\n" +
+	"$EVENT_REASON_COMMUNITY_MEMBER_JOINED\x10\x06\x12&\n" +
+	"\"EVENT_REASON_COMMUNITY_MEMBER_LEFT\x10\a\x12(\n" +
+	"$EVENT_REASON_DIRECT_MESSAGE_RECEIVED\x10\b\x12+\n" +
+	"'EVENT_REASON_COMMUNITY_PLUGIN_INSTALLED\x10\t\x12-\n" +
+	")EVENT_REASON_COMMUNITY_PLUGIN_UNINSTALLED\x10\n" +
+	"*\xd1\x01\n" +
 	"\tEventType\x12\x1a\n" +
 	"\x16EVENT_TYPE_UNSPECIFIED\x10\x00\x12\x13\n" +
 	"\x0fEVENT_TYPE_PING\x10\x01\x12\x1b\n" +
-	"\x17EVENT_TYPE_POST_CREATED\x10\x02\x12$\n" +
-	" EVENT_TYPE_CHAT_MESSAGE_RECEIVED\x10\x04B\xbc\x02\n" +
+	"\x17EVENT_TYPE_POST_CREATED\x10\x02\x12'\n" +
+	"#EVENT_TYPE_COMMUNITY_MEMBER_CHANGED\x10\x03\x12$\n" +
+	" EVENT_TYPE_CHAT_MESSAGE_RECEIVED\x10\x04\x12'\n" +
+	"#EVENT_TYPE_COMMUNITY_PLUGIN_MANAGED\x10\x05B\xbc\x02\n" +
 	"$com.social.mixi.application.const.v1B\x0eEventTypeProtoP\x01Z]github.com/mixigroup/mixi2-application-sdk-go/gen/go/social/mixi/application/const/v1;constv1\xa2\x02\x04SMAC\xaa\x02 Social.Mixi.Application.Const.V1\xca\x02!Social\\Mixi\\Application\\Const_\\V1\xe2\x02-Social\\Mixi\\Application\\Const_\\V1\\GPBMetadata\xea\x02$Social::Mixi::Application::Const::V1b\x06proto3"
 
 var (

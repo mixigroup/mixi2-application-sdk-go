@@ -25,7 +25,7 @@ const (
 type PostPublishingType int32
 
 const (
-	// 未指定（自分のフォロワーのタイムラインに公開）
+	// 未指定（自分のフォロワーのタイムライン、もしくはコミュニティのタイムラインに公開）
 	PostPublishingType_POST_PUBLISHING_TYPE_UNSPECIFIED PostPublishingType = 0
 	// ポストを自分のプロフィールにのみ公開
 	PostPublishingType_POST_PUBLISHING_TYPE_NOT_PUBLISHING PostPublishingType = 1
